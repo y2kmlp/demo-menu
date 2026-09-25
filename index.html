@@ -308,9 +308,9 @@
         }
 
         .category-nav {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px;
     background: white;
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
@@ -322,7 +322,7 @@
 .category-btn {
     background-color: #f0f0f0;
     border: 1px solid #ddd;
-    padding: 10px 5px;
+    padding: 8px 3px;
     border-radius: 8px;
     font-weight: bold;
     font-size: 11px;
@@ -681,15 +681,17 @@
 
     <div class="category-container">
         <div class="category-grid">
-            <button class="category-btn active" onclick="filterCategory('broast', event)">BROAST<br>بروستد</button>
-            <button class="category-btn" onclick="filterCategory('burger', event)">BURGER<br>برجر</button>
-            <button class="category-btn" onclick="filterCategory('tortilla', event)">TORTILLA<br>تورتيلا</button>
-            <button class="category-btn" onclick="filterCategory('pizza', event)">PIZZA<br>بيتزا</button>
-            <button class="category-btn" onclick="filterCategory('fries_meals', event)">FRIES / MEALS<br>بطاطس وجبات</button>
-            <button class="category-btn" onclick="filterCategory('pepsi', event)">PEPSI<br>بيبسي</button>
-            <button class="category-btn" onclick="filterCategory('jumbo', event)">JUMBO<br>جامبو</button>
-            <button class="category-btn" onclick="filterCategory('juices', event)">JUICES<br>عصائر</button>
-            <button class="category-btn" onclick="filterCategory('extra', event)">EXTRA<br>إضافات</button>
+            <button class="category-btn active" onclick="filterCategory('broast', event)">BROAST / بروستد</button>
+            <button class="category-btn" onclick="filterCategory('pizza', event)">PIZZA / بيتزا</button>
+            <button class="category-btn" onclick="filterCategory('extra', event)">EXTRA / إضافات</button>
+
+            <button class="category-btn" onclick="filterCategory('tortilla', event)">TORTILLA / تورتيلا</button>
+            <button class="category-btn" onclick="filterCategory('jumbo', event)">JUMBO / جامبو</button>
+            <button class="category-btn" onclick="filterCategory('burger', event)">BURGER / برجر</button>
+
+            <button class="category-btn" onclick="filterCategory('juices', event)">JUICES / عصائر</button>
+            <button class="category-btn" onclick="filterCategory('pepsi', event)">PEPSI / بيبسي</button>
+            <button class="category-btn" onclick="filterCategory('fries_meals', event)">FRIES / MEALS / بطاطس وجبات</button>
         </div>
     </div>
 
