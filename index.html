@@ -335,6 +335,36 @@
     width: 100% !important;
     box-sizing: border-box !important;
 }
+      .sub-category-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    padding: 8px;
+    background-color: #fff9c4;
+    border-radius: 8px;
+    margin: 8px 0;
+}
+
+.sub-btn {
+    background-color: #ffffff;
+    border: 1px solid #fbc02d;
+    padding: 6px 2px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+    cursor: pointer;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sub-btn.active {
+    background-color: #f57f17;
+    color: white;
+    border-color: #f57f17;
+}  
 
 .category-btn.active {
     background-color: #d32f2f;
@@ -697,6 +727,18 @@
         <button class="category-btn" onclick="filterCategory('pepsi', event)">PEPSI / بيبسي</button>
         <button class="category-btn" onclick="filterCategory('fries_meals', event)">FRIES / MEALS / بطاطس وجبات</button>
     </div>
+    <!-- Juices Sub Category Container -->
+    <div id="juicesSubNav" class="sub-category-nav" style="display: none;">
+        <button class="sub-btn active" onclick="filterJuice('all', event)">ALL / الكل</button>
+        <button class="sub-btn" onclick="filterJuice('mango', event)">MANGO / مانجو</button>
+        <button class="sub-btn" onclick="filterJuice('orange', event)">ORANGE / برتقال</button>
+        <button class="sub-btn" onclick="filterJuice('avocado', event)">AVOCADO / أفوكادو</button>
+        <button class="sub-btn" onclick="filterJuice('strawberry', event)">STRAWBERRY / فراولة</button>
+        <button class="sub-btn" onclick="filterJuice('banana', event)">BANANA / موز</button>
+        <button class="sub-btn" onclick="filterJuice('apple', event)">APPLE / تفاح</button>
+        <button class="sub-btn" onclick="filterJuice('lemon', event)">LEMON / ليمون</button>
+        <button class="sub-btn" onclick="filterJuice('mixed', event)">MIXED / كوكتيل</button>
+    </div>
 
     <div class="container" id="menu-container"></div>
 
@@ -1024,13 +1066,25 @@
             });
         }
 
-        function filterCategory(cat, event) {
-            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
-            if(event) {
-                event.target.closest('.category-btn').classList.add('active');
-            }
-            renderMenu(cat);
+   function filterCategory(category, event) {
+    const buttons = document.querySelectorAll('.category-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+    }
+
+    // ജ്യൂസ് ആണെങ്കിൽ സബ് കാറ്റഗറി കാണിക്കുക
+    const juiceSubNav = document.getElementById('juicesSubNav');
+    if (juiceSubNav) {
+        if (category === 'juices') {
+            juiceSubNav.style.display = 'grid';
+        } else {
+            juiceSubNav.style.display = 'none';
         }
+    }
+
+    renderMenu(category);
+}
 
         function addToCart(id) {
             const item = menuData.find(i => i.id === id);
