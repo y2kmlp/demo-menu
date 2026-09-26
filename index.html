@@ -727,9 +727,9 @@
         <button class="category-btn" onclick="filterCategory('pepsi', event)">PEPSI / بيبسي</button>
         <button class="category-btn" onclick="filterCategory('fries_meals', event)">FRIES / MEALS / بطاطس وجبات</button>
     </div>
-    <!-- Juices Sub Category Container -->
+   <!-- Juices Sub Category Container -->
     <div id="juicesSubNav" class="sub-category-nav" style="display: none;">
-        <button class="sub-btn active" onclick="filterJuice('all', event)">ALL / الكل</button>
+        <button class="sub-btn active" onclick="filterJuice('cocktail', event)">COCKTAIL / كوكتيل</button>
         <button class="sub-btn" onclick="filterJuice('mango', event)">MANGO / مانجو</button>
         <button class="sub-btn" onclick="filterJuice('orange', event)">ORANGE / برتقال</button>
         <button class="sub-btn" onclick="filterJuice('avocado', event)">AVOCADO / أفوكادو</button>
@@ -1066,13 +1066,38 @@
             });
         }
 
-   function filterCategory(category, event) {
+  function filterCategory(category, event) {
     const buttons = document.querySelectorAll('.category-btn');
     buttons.forEach(btn => btn.classList.remove('active'));
     if (event && event.currentTarget) {
         event.currentTarget.classList.add('active');
     }
 
+    const juiceSubNav = document.getElementById('juicesSubNav');
+    if (juiceSubNav) {
+        if (category === 'juices') {
+            juiceSubNav.style.display = 'grid';
+            // ജ്യൂസ് ക്ലിക്ക് ചെയ്യുമ്പോൾ ആദ്യ സബ് കാറ്റഗറിയായ Cocktail ഫിൽട്ടർ ചെയ്യുന്നു
+            filterJuice('cocktail', null);
+            return;
+        } else {
+            juiceSubNav.style.display = 'none';
+        }
+    }
+
+    renderMenu(category);
+}
+
+    // മെനു ഐറ്റങ്ങൾ ഫിൽട്ടർ ചെയ്യുക
+    const allItems = document.querySelectorAll('.menu-item');
+    allItems.forEach(item => {
+        if (subCategory === 'all' || item.classList.contains(subCategory)) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
     // ജ്യൂസ് ആണെങ്കിൽ സബ് കാറ്റഗറി കാണിക്കുക
     const juiceSubNav = document.getElementById('juicesSubNav');
     if (juiceSubNav) {
