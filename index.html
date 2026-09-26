@@ -635,35 +635,6 @@
             text-align: right;
             direction: rtl;
         }
-        /* Juice Sub-Buttons - Right to Left */
-    .juice-sub-container {
-      display: flex;
-      flex-direction: row-reverse;
-      overflow-x: auto;
-      gap: 8px;
-      padding: 10px 15px;
-      background-color: #242424;
-      border-bottom: 1px solid #3a3a3a;
-      scrollbar-width: none;
-    }
-
-    .juice-sub-btn {
-      background-color: #333;
-      color: #ffb703;
-      border: 1px solid #ffb703;
-      padding: 8px 14px;
-      border-radius: 15px;
-      white-space: nowrap;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: bold;
-      direction: rtl;
-    }
-
-    .juice-sub-btn.active {
-      background-color: #ffb703;
-      color: #000;
-    }
     </style>
 </head>
 <body>
@@ -726,7 +697,6 @@
         <button class="category-btn" onclick="filterCategory('pepsi', event)">PEPSI / بيبسي</button>
         <button class="category-btn" onclick="filterCategory('fries_meals', event)">FRIES / MEALS / بطاطس وجبات</button>
     </div>
-    <div class="juice-sub-container" id="juiceSubContainer" style="display: none;"></div>
 
     <div class="container" id="menu-container"></div>
 
@@ -945,17 +915,43 @@
             { id: 811, name: "Rabia Juice - عصير ربيع", cat: "pepsi", price: 2.00, isDrink: true, desc: "Rabia Juice Box / عصير ربيع" },
             { id: 812, name: "Water - ماء", cat: "pepsi", price: 1.00, isDrink: true, desc: "Mineral Water / ماء" },
 
-           "JUICE": {
-        "Cocktail | كوكتيل": [{ name: "Cocktail | كوكتيل", sizes: { "Small | صغير": 5, "Big | كبير": 7, "Gallon | جالون": 21 } }],
-        "Mango | مانجو": [{ name: "Mango | مانجو", sizes: { "Small | صغير": 5, "Big | كبير": 7, "Gallon | جالون": 21 } }],
-        "Guava | جوافة": [{ name: "Guava | جوافة", sizes: { "Small | صغير": 5, "Big | كبير": 7, "Gallon | جالون": 21 } }],
-        "Strawberries | فراولة": [{ name: "Strawberries | فراولة", sizes: { "Small | صغير": 5, "Big | كبير": 7, "Gallon | جالون": 21 } }],
-        "Lemon | ليمون": [{ name: "Lemon | ليمون", sizes: { "Small | صغير": 5, "Big | كبير": 7, "Gallon | جالون": 21 } }],
-        "Apple | تفاح": [{ name: "Apple | تفاح", sizes: { "Small | صغير": 6, "Big | كبير": 8, "Gallon | جالون": 25 } }],
-        "Banana milk | موز بالحليب": [{ name: "Banana milk | موز بالحليب", sizes: { "Small | صغير": 6, "Big | كبير": 8, "Gallon | جالون": 25 } }],
-        "Avocado | أفوكادو": [{ name: "Avocado | أفوكادو", sizes: { "Small | صغير": 6, "Big | كبير": 9, "Gallon | جالون": 27 } }],
-        "Orange Fresh | برتقال كبس": [{ name: "Orange Fresh | برتقال كبس", sizes: { "Small | صغير": 6, "Big | كبير": 9, "Gallon | جالون": 27 } }]
-      },
+            // ================= FRESH JUICES (عصائر طازجة) =================
+            { id: 901, name: "Cocktail Juice Small - كوكتيل صغير", cat: "juices", price: 5, isDrink: true, desc: "Fresh Juice Small / عصير طازج صغير" },
+            { id: 902, name: "Cocktail Juice Big - كوكتيل كبير", cat: "juices", price: 7, isDrink: true, desc: "Fresh Juice Big / عصير طازج كبير" },
+            { id: 903, name: "Cocktail Juice Gallon - كوكتيل جالون", cat: "juices", price: 21, isDrink: true, desc: "Fresh Juice Gallon / عصير طازج جالون" },
+
+            { id: 904, name: "Mango Juice Small - مانجو صغير", cat: "juices", price: 5, isDrink: true, desc: "Fresh Juice Small / عصير طازج صغير" },
+            { id: 905, name: "Mango Juice Big - مانجو كبير", cat: "juices", price: 7, isDrink: true, desc: "Fresh Juice Big / عصير طازج كبير" },
+            { id: 906, name: "Mango Juice Gallon - مانجو جالون", cat: "juices", price: 21, isDrink: true, desc: "Fresh Juice Gallon / عصير طازج جالون" },
+
+            { id: 907, name: "Guava Juice Small - جوافة صغير", cat: "juices", price: 5, isDrink: true, desc: "Fresh Juice Small / عصير طازج صغير" },
+            { id: 908, name: "Guava Juice Big - جوافة كبير", cat: "juices", price: 7, isDrink: true, desc: "Fresh Juice Big / عصير طازج كبير" },
+            { id: 909, name: "Guava Juice Gallon - جوافة جالون", cat: "juices", price: 21, isDrink: true, desc: "Fresh Juice Gallon / عصير طازج جالون" },
+
+            { id: 910, name: "Strawberries Juice Small - فراولة صغير", cat: "juices", price: 5, isDrink: true, desc: "Fresh Juice Small / عصير طازج صغير" },
+            { id: 911, name: "Strawberries Juice Big - فراولة كبير", cat: "juices", price: 7, isDrink: true, desc: "Fresh Juice Big / عصير طازج كبير" },
+            { id: 912, name: "Strawberries Juice Gallon - فراولة جالون", cat: "juices", price: 21, isDrink: true, desc: "Fresh Juice Gallon / عصير طازج جالون" },
+
+            { id: 913, name: "Lemon Juice Small - ليمون صغير", cat: "juices", price: 5, isDrink: true, desc: "Fresh Juice Small / عصير طازج صغير" },
+            { id: 914, name: "Lemon Juice Big - ليمون كبير", cat: "juices", price: 7, isDrink: true, desc: "Fresh Juice Big / عصير طازج كبير" },
+            { id: 915, name: "Lemon Juice Gallon - ليمون جالون", cat: "juices", price: 21, isDrink: true, desc: "Fresh Juice Gallon / عصير تفاح جالون" },
+
+            { id: 916, name: "Apple Juice Small - تفاح صغير", cat: "juices", price: 6, isDrink: true, desc: "Fresh Juice Small / عصير تفاح صغير" },
+            { id: 917, name: "Apple Juice Big - تفاح كبير", cat: "juices", price: 8, isDrink: true, desc: "Fresh Juice Big / عصير تفاح كبير" },
+            { id: 918, name: "Apple Juice Gallon - تفاح جالون", cat: "juices", price: 25, isDrink: true, desc: "Fresh Juice Gallon / عصير تفاح جالون" },
+
+            { id: 919, name: "Banana Milk Small - موز بالحليب صغير", cat: "juices", price: 6, isDrink: true, desc: "Fresh Juice Small / عصير موز بالحليب صغير" },
+            { id: 920, name: "Banana Milk Big - موز بالحليب كبير", cat: "juices", price: 8, isDrink: true, desc: "Fresh Juice Big / عصير موز بالحليب كبير" },
+            { id: 921, name: "Banana Milk Gallon - موز بالحليب جالون", cat: "juices", price: 25, isDrink: true, desc: "Fresh Juice Gallon / عصير موز بالحليب جالون" },
+
+            { id: 922, name: "Avocado Small - أفوكادو صغير", cat: "juices", price: 6, isDrink: true, desc: "Fresh Avocado Small / أفوكادو صغير" },
+            { id: 923, name: "Avocado Big - أفوكادو كبير", cat: "juices", price: 9, isDrink: true, desc: "Fresh Avocado Big / أفوكادو كبير" },
+            { id: 924, name: "Avocado Gallon - أفوكادو جالون", cat: "juices", price: 27, isDrink: true, desc: "Fresh Avocado Gallon / أفوكادو جالون" },
+
+            { id: 925, name: "Orange Fresh Small - برتقال كبس صغير", cat: "juices", price: 6, isDrink: true, desc: "Fresh Orange Small / عصير برتقال صغير" },
+            { id: 926, name: "Orange Fresh Big - برتقال كبس كبير", cat: "juices", price: 9, isDrink: true, desc: "Fresh Orange Big / عصير برتقال كبير" },
+            { id: 927, name: "Orange Fresh Gallon - برتقال كبس جالون", cat: "juices", price: 27, isDrink: true, desc: "Fresh Orange Gallon / عصير برتقال جالون" }
+        ];
 
         let cart = {};
         let currentOrderType = 'pickup';
@@ -1275,33 +1271,6 @@
         setInterval(updateSaudiClockAndStatus, 1000);
         updateSaudiClockAndStatus();
         renderMenu('broast');
-        let currentJuiceSub = "Cocktail | كوكتيل";
-
-    function renderJuiceSubCategories() {
-      const subContainer = document.getElementById('juiceSubContainer');
-      if (!subContainer) return;
-
-      subContainer.innerHTML = '';
-
-      if (currentCategory === "JUICE") {
-        subContainer.style.display = "flex";
-        const subCats = Object.keys(menuData["JUICE"]);
-        
-        subCats.forEach(sub => {
-          const btn = document.createElement('button');
-          btn.className = `juice-sub-btn ${sub === currentJuiceSub ? 'active' : ''}`;
-          btn.innerText = sub;
-          btn.onclick = () => {
-            currentJuiceSub = sub;
-            renderJuiceSubCategories();
-            renderMenu();
-          };
-          subContainer.appendChild(btn);
-        });
-      } else {
-        subContainer.style.display = "none";
-      }
-    }
     </script>
 </body>
 </html>
