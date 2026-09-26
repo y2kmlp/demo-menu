@@ -1024,13 +1024,46 @@
             });
         }
 
-        function filterCategory(cat, event) {
-            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
-            if(event) {
-                event.target.closest('.category-btn').classList.add('active');
-            }
-            renderMenu(cat);
+       function filterCategory(category, event) {
+    const buttons = document.querySelectorAll('.category-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+    }
+
+    const juiceSubNav = document.getElementById('juicesSubNav');
+    
+    if (category === 'juices') {
+        if (juiceSubNav) juiceSubNav.style.display = 'grid';
+        
+        const subButtons = document.querySelectorAll('.sub-btn');
+        subButtons.forEach(btn => btn.classList.remove('active'));
+        
+        const allItems = document.querySelectorAll('.menu-item');
+        allItems.forEach(item => item.style.display = 'none');
+    } else {
+        if (juiceSubNav) juiceSubNav.style.display = 'none';
+        renderMenu(category);
+    }
+}
+
+function filterJuice(subCategory, event) {
+    const subButtons = document.querySelectorAll('.sub-btn');
+    subButtons.forEach(btn => btn.classList.remove('active'));
+    
+    if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+    }
+
+    const allItems = document.querySelectorAll('.menu-item');
+    allItems.forEach(item => {
+        if (item.classList.contains(subCategory)) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
         }
+    });
+}
 
         function addToCart(id) {
             const item = menuData.find(i => i.id === id);
