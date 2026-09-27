@@ -389,16 +389,41 @@
             font-size: 15.5px;
         }
 
-        .juice-select {
-            padding: 6px 8px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 12px;
+        /* ===== JUICE SIZE PILLS STYLES ===== */
+        .juice-pills-container {
+            display: flex;
+            gap: 6px;
+            margin: 8px 0;
+            flex-wrap: wrap;
+        }
+
+        .juice-pill-option {
+            position: relative;
+        }
+
+        .juice-pill-option input[type="radio"] {
+            display: none;
+        }
+
+        .juice-pill-label {
+            display: inline-block;
+            padding: 6px 10px;
+            background: #f1f3f5;
+            border: 1.5px solid #dcdfe6;
+            border-radius: 20px;
+            font-size: 11px;
             font-weight: bold;
-            margin-bottom: 6px;
-            width: 100%;
-            background-color: #fff;
-            outline: none;
+            color: #444;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .juice-pill-option input[type="radio"]:checked + .juice-pill-label {
+            background: #fff5f5;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            box-shadow: 0 2px 5px rgba(211, 47, 47, 0.15);
         }
 
         .add-btn {
@@ -924,7 +949,7 @@
             { id: 811, name: "Rabia Juice - عصير ربيع", cat: "pepsi", price: 2.00, isDrink: true, desc: "Rabia Juice Box / عصير ربيع" },
             { id: 812, name: "Water - ماء", cat: "pepsi", price: 1.00, isDrink: true, desc: "Mineral Water / ماء" },
 
-            // ================= FRESH JUICES - DROPDOWN VERSION (عصائر طازجة) =================
+            // ================= FRESH JUICES - PILLS VERSION (عصائر طازجة) =================
             { 
                 id: 901, 
                 nameEn: "Cocktail Juice", 
@@ -1079,6 +1104,13 @@
             }
         }
 
+        function updateJuicePriceDisplay(itemId, price) {
+            const priceElem = document.getElementById(`juice-price-${itemId}`);
+            if (priceElem) {
+                priceElem.innerText = `${price.toFixed(2)} SAR`;
+            }
+        }
+
         function renderMenu(filter = 'broast') {
             const container = document.getElementById('menu-container');
             container.innerHTML = '';
@@ -1092,19 +1124,27 @@
 
             filtered.forEach(item => {
                 if (filter === 'juices') {
-                    // Render Fresh Juice Item with Dropdown
-                    let optionsHTML = item.sizes.map((s, idx) => 
-                        `<option value="${idx}">${s.sizeEn} / ${s.sizeAr} - ${s.price.toFixed(2)} SAR</option>`
-                    ).join('');
+                    // Render Fresh Juice Item with Radio Pills
+                    let pillsHTML = item.sizes.map((s, idx) => `
+                        <div class="juice-pill-option">
+                            <input type="radio" id="juice-${item.id}-size-${idx}" name="juice-size-${item.id}" value="${idx}" ${idx === 0 ? 'checked' : ''} onchange="updateJuicePriceDisplay(${item.id}, ${s.price})">
+                            <label for="juice-${item.id}-size-${idx}" class="juice-pill-label">
+                                ${s.sizeEn} / ${s.sizeAr}
+                            </label>
+                        </div>
+                    `).join('');
+
+                    const defaultPrice = item.sizes[0].price;
 
                     container.innerHTML += `
                         <div class="menu-item">
                             <div class="item-info" style="flex: 1; padding-right: 10px;">
                                 <h3>${item.nameEn} - ${item.nameAr}</h3>
                                 <p>${item.desc}</p>
-                                <select class="juice-select" id="select-juice-${item.id}">
-                                    ${optionsHTML}
-                                </select>
+                                <div class="juice-pills-container">
+                                    ${pillsHTML}
+                                </div>
+                                <div class="item-price" id="juice-price-${item.id}">${defaultPrice.toFixed(2)} SAR</div>
                             </div>
                             <div>
                                 <button class="add-btn" onclick="addJuiceToCart(${item.id})">+ Add / إضافة</button>
@@ -1139,8 +1179,8 @@
 
         function addJuiceToCart(itemId) {
             const item = menuData.find(i => i.id === itemId);
-            const selectElem = document.getElementById(`select-juice-${itemId}`);
-            const selectedIdx = selectElem.value;
+            const selectedRadio = document.querySelector(`input[name="juice-size-${itemId}"]:checked`);
+            const selectedIdx = selectedRadio ? selectedRadio.value : 0;
             const selectedSize = item.sizes[selectedIdx];
 
             // Unique ID for Cart (e.g., 901_0, 901_1)
