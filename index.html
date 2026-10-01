@@ -14,7 +14,7 @@
             --primary-dark: #b71c1c;
             --accent-gold: #ffb300;
             --secondary: #ffffff;
-            --bg-light: #fcf8f5; /* സ്ലൈറ്റ്ലി വാർം ബ്യൂട്ടിഫുൾ ബാക്ക്ഗ്രൗണ്ട് */
+            --bg-light: #fcf8f5;
             --text-color: #212529;
             --gray-light: #e2e8f0;
             --shadow: 0 4px 15px rgba(211, 47, 47, 0.08);
@@ -36,11 +36,12 @@
             text-align: left;
         }
 
-        .announcement-bar {
+        /* 1st Announcement Bar (English - Right to Left) */
+        .announcement-bar-1 {
             background: linear-gradient(90deg, #b71c1c, #d32f2f, #b71c1c);
             color: white;
             padding: 8px 0;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             overflow: hidden;
             white-space: nowrap;
@@ -48,21 +49,22 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .marquee-text {
+        .marquee-left {
             display: inline-block;
             padding-left: 100%;
-            animation: marquee 20s linear infinite;
+            animation: marquee-left-anim 25s linear infinite;
         }
 
-        @keyframes marquee {
+        @keyframes marquee-left-anim {
             0% { transform: translate(0, 0); }
             100% { transform: translate(-100%, 0); }
         }
 
+        /* Header Styling */
         header {
             background-color: var(--secondary);
             box-shadow: var(--shadow);
-            padding: 15px 20px;
+            padding: 12px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -103,33 +105,48 @@
         .header-center-slot {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
         .header-map-btn {
             background: #1a73e8;
             color: white;
-            padding: 7px 16px;
+            padding: 7px 14px;
             border-radius: 20px;
             text-decoration: none;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             transition: 0.2s;
             box-shadow: 0 2px 6px rgba(26,115,232,0.3);
         }
 
-        .header-map-btn:hover {
-            background: #1557b0;
+        .header-call-btn {
+            background: #2e7d32;
+            color: white;
+            padding: 7px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.2s;
+            box-shadow: 0 2px 6px rgba(46,125,50,0.3);
+        }
+
+        .header-map-btn:hover, .header-call-btn:hover {
             transform: translateY(-1px);
         }
 
         .store-status {
-            padding: 6px 14px;
+            padding: 6px 12px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
         }
 
@@ -145,6 +162,57 @@
             border: 1px solid #ffcdd2;
         }
 
+        /* 2nd Announcement Bar (Arabic - Left to Right) */
+        .announcement-bar-2 {
+            background: #212121;
+            color: var(--accent-gold);
+            padding: 7px 0;
+            font-size: 13px;
+            font-weight: 700;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            direction: rtl;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .marquee-right {
+            display: inline-block;
+            padding-right: 100%;
+            animation: marquee-right-anim 25s linear infinite;
+        }
+
+        @keyframes marquee-right-anim {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100%, 0); }
+        }
+
+        /* Since 1987 Vintage Banner */
+        .since-banner {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border: 2px dashed #e65100;
+            border-radius: 12px;
+            padding: 10px 15px;
+            text-align: center;
+            margin: 15px auto 5px auto;
+            max-width: 800px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+        }
+
+        .since-banner h2 {
+            color: #b71c1c;
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .since-banner p {
+            color: #4e342e;
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 2px;
+        }
+
         /* 3x3 Grid Category Navigation */
         .category-grid-nav {
             display: grid;
@@ -154,8 +222,9 @@
             padding: 15px;
             border-bottom: 1px solid var(--gray-light);
             max-width: 800px;
-            margin: 0 auto;
+            margin: 10px auto;
             box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            border-radius: 12px;
         }
 
         .cat-btn {
@@ -197,7 +266,7 @@
 
         .container {
             max-width: 800px;
-            margin: 20px auto;
+            margin: 15px auto;
             padding: 0 15px;
         }
 
@@ -207,7 +276,6 @@
             gap: 18px;
         }
 
-        /* Item Cards with Custom Accent */
         .item-card {
             background: white;
             border-radius: 14px;
@@ -226,7 +294,6 @@
             box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
         }
 
-        /* Juice & Drink Special Styling */
         .item-card.category-juices {
             border-left-color: #ff9800;
             background: linear-gradient(180deg, #ffffff 0%, #fffde7 100%);
@@ -459,7 +526,7 @@
         }
 
         .qty-btn {
-            background: #eeef0;
+            background: #eee;
             border: none;
             width: 28px;
             height: 28px;
@@ -495,15 +562,6 @@
             box-shadow: 0 3px 10px rgba(211, 47, 47, 0.3);
         }
 
-        .gallery-slot {
-            margin-top: 15px;
-            border: 2px dashed #444;
-            padding: 15px;
-            border-radius: 8px;
-            color: #aaa;
-            font-size: 13px;
-        }
-
         .footer-credits {
             margin-top: 18px;
             padding-top: 15px;
@@ -515,12 +573,14 @@
 </head>
 <body>
 
-    <div class="announcement-bar">
-        <div class="marquee-text">
-            📍 Al Salam, Riyadh | Working Hours: 12:30 PM - 01:30 AM &nbsp;&nbsp; | &nbsp;&nbsp; 📍 السلام، الرياض | أوقات العمل: ١٢:٣٠ ظهراً - ٠١:٣٠ ليلاً
+    <!-- 1st Announcement Bar: English (Right to Left) -->
+    <div class="announcement-bar-1">
+        <div class="marquee-left">
+            🍗 Serving You Delicious Broasted Since 1987! &nbsp;&nbsp;|&nbsp;&nbsp; Al Malaz (Main): 0114775172 &nbsp;&nbsp;|&nbsp;&nbsp; Al Salam: 0112376000 &nbsp;&nbsp;|&nbsp;&nbsp; Al Munsiyah: 0550261660 &nbsp;&nbsp;|&nbsp;&nbsp; Al Futa: 0538896156
         </div>
     </div>
 
+    <!-- Header Section -->
     <header>
         <div class="logo-container">
             <img src="logo.png" alt="Kufi Broasted" onerror="this.src='https://via.placeholder.com/55?text=Kufi'">
@@ -531,12 +591,28 @@
         </div>
 
         <div class="header-center-slot">
+            <a href="tel:0112376000" class="header-call-btn">
+                <i class="fas fa-phone-alt"></i> 0112376000
+            </a>
             <a href="https://maps.app.goo.gl/reHjbT4YxnHDwFmYA?g_st=ഔ" target="_blank" class="header-map-btn">
-                <i class="fas fa-map-marker-alt"></i> Location (الموقع)
+                <i class="fas fa-map-marker-alt"></i> Location
             </a>
             <div id="store-status-badge" class="store-status status-open">...</div>
         </div>
     </header>
+
+    <!-- 2nd Announcement Bar: Arabic (Left to Right) -->
+    <div class="announcement-bar-2">
+        <div class="marquee-right">
+            🍗 نخدمكم بأشهى بروستد منذ عام ١٩٨Earlyم! &nbsp;&nbsp;|&nbsp;&nbsp; الفرع الرئيسي - الملز: ٠١١٤٧٧٥١٧٢ &nbsp;&nbsp;|&nbsp;&nbsp; السلام: ٠١١٢٣٧٦٠٠٠ &nbsp;&nbsp;|&nbsp;&nbsp; المونسية: ٠٥٥٠٢٦١٦٦٠ &nbsp;&nbsp;|&nbsp;&nbsp; الفوطة: ٠٥٣٨٨٩٦١٥٦
+        </div>
+    </div>
+
+    <!-- Vintage 1987 Banner -->
+    <div class="since-banner">
+        <h2>🍗 SERVING YOU DELICIOUS BROASTED SINCE 1987</h2>
+        <p>١٩٨٧ منذ عام - نخدمكم بأشهى بروستد</p>
+    </div>
 
     <!-- 3x3 Grid Category Navigation -->
     <div class="category-grid-nav">
@@ -557,15 +633,11 @@
         <footer>
             <h3>Kufi Broasted - كوفي بروستد</h3>
             <p style="font-size: 13px; color: #ccc; margin-top: 5px;">Al Salam District, Riyadh - حي السلام، الرياض</p>
+            <p style="font-size: 14px; color: #ffb300; margin-top: 5px; font-weight: bold;">📞 Main Call: 011 237 6000</p>
             
             <a href="https://maps.app.goo.gl/reHjbT4YxnHDwFmYA?g_st=ഔ" target="_blank" class="location-btn">
                 <i class="fas fa-map-marker-alt"></i> Location on Google Maps (موقعنا على الخريطة)
             </a>
-
-            <div class="gallery-slot">
-                <i class="fas fa-images" style="font-size:24px; margin-bottom:5px;"></i><br>
-                Photo Gallery Section (سيتم إضافة صور المعرض لاحقاً)
-            </div>
 
             <div class="footer-credits">
                 <p>© Kufi Broasted. All rights reserved.</p>
