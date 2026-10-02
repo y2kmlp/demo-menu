@@ -329,7 +329,7 @@
             color: #fff8e1;
         }
 
-        /* Sub-category Filter Buttons (Updated for bilingual support) */
+        /* Sub-category Filter Buttons */
         .subcategory-filter {
             display: flex;
             justify-content: center;
@@ -829,7 +829,8 @@
             { id: 'b4', nameEn: 'Chicken Boneless 10Pcs', nameAr: 'مسحب دجاج 10 قطع', category: 'broasted', price: 20.00, desc: 'CAL 1840', hasFlavor: true },
             { id: 'b5', nameEn: 'Chicken Strips 6Pcs', nameAr: 'ستريبس دجاج 6 قطع', category: 'broasted', price: 20.00, desc: 'CAL 1875', hasFlavor: true },
             { id: 'b6', nameEn: 'Chicken Zinger 4Pcs', nameAr: 'زنجر دجاج 4 قطع', category: 'broasted', price: 23.00, desc: 'CAL 1873', hasFlavor: true },
-            { id: 'b7', nameEn: 'Shrimp Broasted 12Pcs', nameAr: 'بروستد روبيان 12 قطعة', category: 'broasted', price: 23.00, desc: 'CAL 1719', hasFlavor: true },
+            { id: 'b7', nameEn: 'Shrimp Broasted', nameAr: 'بروستد روبيان', category: 'broasted', price: 23.00, desc: 'CAL 1719', hasFlavor: true, isShrimp: true },
+            { id: 'b8', nameEn: 'Super Fish 6Pcs', nameAr: 'سوبر سمك ٦ قطع', category: 'broasted', price: 23.00, desc: 'CAL 1885', hasFlavor: false },
 
             // 2. Shawarma (شاورما)
             { id: 's1', nameEn: 'Shawarma Sandwich', nameAr: 'ساندوتش شاورما', category: 'shawarma', price: 6.00, desc: 'CAL 352', hasFlavor: false },
@@ -927,7 +928,7 @@
 
             let subcatFilterHtml = '';
 
-            // Handle Sub-category Filtering for Soft Drinks (Updated with Arabic texts)
+            // Handle Sub-category Filtering for Soft Drinks
             if (category === 'drinks') {
                 subcatFilterHtml = `
                     <div class="subcategory-filter">
@@ -952,12 +953,21 @@
                 let defaultPrice = item.price ? item.price.toFixed(2) + ' SR' : '';
 
                 if (item.hasFlavor) {
-                    optionsHtml = `
-                        <div class="option-selection">
-                            <label><input type="radio" name="opt_${item.id}" value="Spicy" checked> Spicy (حراق)</label>
-                            <label><input type="radio" name="opt_${item.id}" value="Normal"> Normal (عادي)</label>
-                        </div>
-                    `;
+                    if (item.isShrimp) {
+                        optionsHtml = `
+                            <div class="option-selection">
+                                <label><input type="radio" name="opt_${item.id}" value="Spicy" checked> Spicy (10Pcs) / حراق (١٠ قطع)</label>
+                                <label><input type="radio" name="opt_${item.id}" value="Normal"> Normal (12Pcs) / عادي (١٢ قطعة)</label>
+                            </div>
+                        `;
+                    } else {
+                        optionsHtml = `
+                            <div class="option-selection">
+                                <label><input type="radio" name="opt_${item.id}" value="Spicy" checked> Spicy (حراق)</label>
+                                <label><input type="radio" name="opt_${item.id}" value="Normal"> Normal (عادي)</label>
+                            </div>
+                        `;
+                    }
                 } else if (item.hasSizes) {
                     optionsHtml = '<div class="option-selection">';
                     item.sizes.forEach((sz, idx) => {
@@ -1007,7 +1017,7 @@
             let targetBtn = event.currentTarget || event.target;
             if(!targetBtn.classList.contains('cat-btn')) targetBtn = targetBtn.closest('.cat-btn');
             targetBtn.classList.add('active');
-            activeDrinkSubcat = 'small'; // reset subcategory to default 'small' on main category switch
+            activeDrinkSubcat = 'small';
             renderMenu(cat);
         }
 
@@ -1021,14 +1031,26 @@
             if (item.hasFlavor) {
                 const selected = document.querySelector(`input[name="opt_${id}"]:checked`);
                 if (selected) {
-                    if (selected.value === 'Spicy') {
-                        optEn = ' (Spicy)';
-                        optAr = ' (حراق)';
-                        optKey = '_spicy';
+                    if (item.isShrimp) {
+                        if (selected.value === 'Spicy') {
+                            optEn = ' 10Pcs (Spicy)';
+                            optAr = ' ١٠ قطع (حراق)';
+                            optKey = '_spicy';
+                        } else {
+                            optEn = ' 12Pcs (Normal)';
+                            optAr = ' ١٢ قطعة (عادي)';
+                            optKey = '_normal';
+                        }
                     } else {
-                        optEn = ' (Normal)';
-                        optAr = ' (عادي)';
-                        optKey = '_normal';
+                        if (selected.value === 'Spicy') {
+                            optEn = ' (Spicy)';
+                            optAr = ' (حراق)';
+                            optKey = '_spicy';
+                        } else {
+                            optEn = ' (Normal)';
+                            optAr = ' (عادي)';
+                            optKey = '_normal';
+                        }
                     }
                 }
             } else if (item.hasSizes) {
