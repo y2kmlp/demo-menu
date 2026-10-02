@@ -333,21 +333,25 @@
         .subcategory-filter {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 20px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            width: 100%;
         }
 
         .sub-cat-btn {
-            padding: 8px 14px;
+            flex: 1;
+            padding: 8px 4px;
             border: 1px solid #0288d1;
             border-radius: 20px;
             background: #e1f5fe;
             color: #0288d1;
             font-weight: 700;
-            font-size: 12px;
+            font-size: 11px;
             cursor: pointer;
             transition: all 0.2s ease;
+            text-align: center;
+            white-space: nowrap;
         }
 
         .sub-cat-btn.active, .sub-cat-btn:hover {
@@ -899,7 +903,7 @@
         ];
 
         let cart = {};
-        let activeDrinkSubcat = 'all';
+        let activeDrinkSubcat = 'small';
 
         function renderMenu(category) {
             const container = document.getElementById('menu-container');
@@ -911,16 +915,13 @@
             if (category === 'drinks') {
                 subcatFilterHtml = `
                     <div class="subcategory-filter">
-                        <button class="sub-cat-btn ${activeDrinkSubcat === 'all' ? 'active' : ''}" onclick="filterDrinkSubcat('all')">All / الكل</button>
                         <button class="sub-cat-btn ${activeDrinkSubcat === 'small' ? 'active' : ''}" onclick="filterDrinkSubcat('small')">Small / Can</button>
                         <button class="sub-cat-btn ${activeDrinkSubcat === 'medium' ? 'active' : ''}" onclick="filterDrinkSubcat('medium')">Medium (1L - 5 SAR)</button>
                         <button class="sub-cat-btn ${activeDrinkSubcat === 'large' ? 'active' : ''}" onclick="filterDrinkSubcat('large')">Large (2.25L - 9 SAR)</button>
                     </div>
                 `;
 
-                if (activeDrinkSubcat !== 'all') {
-                    filtered = filtered.filter(i => i.subcategory === activeDrinkSubcat);
-                }
+                filtered = filtered.filter(i => i.subcategory === activeDrinkSubcat);
             }
 
             let html = subcatFilterHtml + '<div class="menu-grid">';
@@ -984,7 +985,7 @@
             let targetBtn = event.currentTarget || event.target;
             if(!targetBtn.classList.contains('cat-btn')) targetBtn = targetBtn.closest('.cat-btn');
             targetBtn.classList.add('active');
-            activeDrinkSubcat = 'all'; // reset subcategory on main category switch
+            activeDrinkSubcat = 'small'; // reset subcategory to default 'small' on main category switch
             renderMenu(cat);
         }
 
