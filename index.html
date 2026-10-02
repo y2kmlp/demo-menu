@@ -329,6 +329,32 @@
             color: #fff8e1;
         }
 
+        /* Sub-category Filter Buttons */
+        .subcategory-filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .sub-cat-btn {
+            padding: 8px 14px;
+            border: 1px solid #0288d1;
+            border-radius: 20px;
+            background: #e1f5fe;
+            color: #0288d1;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .sub-cat-btn.active, .sub-cat-btn:hover {
+            background: #0288d1;
+            color: white;
+        }
+
         .container {
             max-width: 800px;
             margin: 15px auto;
@@ -671,7 +697,7 @@
     <!-- 2nd Announcement Bar: Arabic (Left to Right) -->
     <div class="announcement-bar-2">
         <div class="marquee-right">
-            🍗 نخدمكم بأشهى بروستد منذ عام ١٩٨Earlyم! &nbsp;&nbsp;|&nbsp;&nbsp; الفرع الرئيسي - الملز: ٠١١٤٧٧٥١٧٢ &nbsp;&nbsp;|&nbsp;&nbsp; السلام: ٠١١٢٣٧٦٠٠٠ &nbsp;&nbsp;|&nbsp;&nbsp; المونسية: ٠٥٥٠٢٦١٦٦٠ &nbsp;&nbsp;|&nbsp;&nbsp; الفوطة: ٠٥٣٨٨٩٦١٥٦
+            🍗 نخدمكم بأشهى بروستد منذ عام ١٩٨٧م! &nbsp;&nbsp;|&nbsp;&nbsp; الفرع الرئيسي - الملز: ٠١١٤٧٧٥١٧٢ &nbsp;&nbsp;|&nbsp;&nbsp; السلام: ٠١١٢٣٧٦٠٠٠ &nbsp;&nbsp;|&nbsp;&nbsp; المونسية: ٠٥٥٠٢٦١٦٦٠ &nbsp;&nbsp;|&nbsp;&nbsp; الفوطة: ٠٥٣٨٨٩٦١٥٦
         </div>
     </div>
 
@@ -844,22 +870,60 @@
             { id: 'j12', nameEn: 'Orange Squeeze Juice', nameAr: 'عصير برتقال كبس', category: 'juices', hasSizes: true, sizes: [ {labelEn: 'Med (وسط)', labelAr: 'وسط', price: 9.00}, {labelEn: 'Big (كبير)', labelAr: 'كبير', price: 10.00} ] },
             { id: 'j13', nameEn: 'Layers Juice', nameAr: 'عصير طبقات', category: 'juices', hasSizes: true, sizes: [ {labelEn: 'Med (وسط)', labelAr: 'وسط', price: 9.00}, {labelEn: 'Big (كبير)', labelAr: 'كبير', price: 10.00} ] },
 
-            // 9. Soft Drinks (مشروبات غازية)
-            { id: 'd1', nameEn: 'Water', nameAr: 'مياه', category: 'drinks', price: 1.00, desc: 'Bottled Water', hasFlavor: false },
-            { id: 'd2', nameEn: 'Pepsi', nameAr: 'بيبسي', category: 'drinks', price: 3.00, desc: '330ml Can', hasFlavor: false },
-            { id: 'd3', nameEn: '7Up', nameAr: 'سفن أب', category: 'drinks', price: 3.00, desc: '330ml Can', hasFlavor: false },
-            { id: 'd4', nameEn: 'Mountain Dew', nameAr: 'ماونتن ديو', category: 'drinks', price: 3.00, desc: '330ml Can', hasFlavor: false },
-            { id: 'd5', nameEn: 'Citrus', nameAr: 'سترستر', category: 'drinks', price: 3.00, desc: '330ml Can', hasFlavor: false },
-            { id: 'd6', nameEn: 'Miranda Orange', nameAr: 'میرندا برتقال', category: 'drinks', price: 3.00, desc: '330ml Can', hasFlavor: false }
+            // 9. Soft Drinks - Sub-categories Reorganized (مشروبات غازية)
+            // Small / Can
+            { id: 'd1', nameEn: 'Water', nameAr: 'مياه', category: 'drinks', subcategory: 'small', price: 1.00, desc: 'Bottled Water', hasFlavor: false },
+            { id: 'd2', nameEn: 'Aseer Rabea', nameAr: 'عصير ربيع', category: 'drinks', subcategory: 'small', price: 2.00, desc: 'Tetra Pack', hasFlavor: false },
+            { id: 'd3', nameEn: 'Pepsi', nameAr: 'بيبسي', category: 'drinks', subcategory: 'small', price: 3.00, desc: '330ml Can', hasFlavor: false },
+            { id: 'd4', nameEn: '7Up', nameAr: 'سفن أب', category: 'drinks', subcategory: 'small', price: 3.00, desc: '330ml Can', hasFlavor: false },
+            { id: 'd5', nameEn: 'Mountain Dew', nameAr: 'ماونتن ديو', category: 'drinks', subcategory: 'small', price: 3.00, desc: '330ml Can', hasFlavor: false },
+            { id: 'd6', nameEn: 'Miranda Orange', nameAr: 'میرندا برتقال', category: 'drinks', subcategory: 'small', price: 3.00, desc: '330ml Can', hasFlavor: false },
+            { id: 'd7', nameEn: 'Shani', nameAr: 'شاني', category: 'drinks', subcategory: 'small', price: 3.00, desc: '330ml Can', hasFlavor: false },
+            { id: 'd8', nameEn: 'Pepsi Diet', nameAr: 'بيبسي دايت', category: 'drinks', subcategory: 'small', price: 3.00, desc: '330ml Can', hasFlavor: false },
+            { id: 'd9', nameEn: '7Up Diet', nameAr: 'سفن أب دايت', category: 'drinks', subcategory: 'small', price: 3.00, desc: '330ml Can', hasFlavor: false },
+
+            // Medium Family Bottle (1 Liter - 5 SAR)
+            { id: 'dm1', nameEn: 'Pepsi (1 Liter)', nameAr: 'بيبسي (1 لتر)', category: 'drinks', subcategory: 'medium', price: 5.00, desc: '1 Liter Family Bottle', hasFlavor: false },
+            { id: 'dm2', nameEn: 'Miranda Citrus (1 Liter)', nameAr: 'میرندا حمضيات (1 لتر)', category: 'drinks', subcategory: 'medium', price: 5.00, desc: '1 Liter Family Bottle', hasFlavor: false },
+            { id: 'dm3', nameEn: 'Miranda Orange (1 Liter)', nameAr: 'میرندا برتقال (1 لتر)', category: 'drinks', subcategory: 'medium', price: 5.00, desc: '1 Liter Family Bottle', hasFlavor: false },
+            { id: 'dm4', nameEn: '7Up (1 Liter)', nameAr: 'سفن أب (1 لتر)', category: 'drinks', subcategory: 'medium', price: 5.00, desc: '1 Liter Family Bottle', hasFlavor: false },
+            { id: 'dm5', nameEn: 'Mountain Dew (1 Liter)', nameAr: 'ماونتن ديو (1 لتر)', category: 'drinks', subcategory: 'medium', price: 5.00, desc: '1 Liter Family Bottle', hasFlavor: false },
+            { id: 'dm6', nameEn: 'Pepsi Diet (1 Liter)', nameAr: 'بيبسي دايت (1 لتر)', category: 'drinks', subcategory: 'medium', price: 5.00, desc: '1 Liter Family Bottle', hasFlavor: false },
+
+            // Large Family Bottle (2.25 Liter - 9 SAR)
+            { id: 'dl1', nameEn: 'Pepsi (2.25 Liter)', nameAr: 'بيبسي (2.25 لتر)', category: 'drinks', subcategory: 'large', price: 9.00, desc: '2.25 Liter Family Bottle', hasFlavor: false },
+            { id: 'dl2', nameEn: 'Miranda Citrus (2.25 Liter)', nameAr: 'میرندا حمضيات (2.25 لتر)', category: 'drinks', subcategory: 'large', price: 9.00, desc: '2.25 Liter Family Bottle', hasFlavor: false },
+            { id: 'dl3', nameEn: 'Miranda Orange (2.25 Liter)', nameAr: 'میرندا برتقال (2.25 لتر)', category: 'drinks', subcategory: 'large', price: 9.00, desc: '2.25 Liter Family Bottle', hasFlavor: false },
+            { id: 'dl4', nameEn: '7Up (2.25 Liter)', nameAr: 'سفن أب (2.25 لتر)', category: 'drinks', subcategory: 'large', price: 9.00, desc: '2.25 Liter Family Bottle', hasFlavor: false },
+            { id: 'dl5', nameEn: 'Mountain Dew (2.25 Liter)', nameAr: 'ماونتن ديو (2.25 لتر)', category: 'drinks', subcategory: 'large', price: 9.00, desc: '2.25 Liter Family Bottle', hasFlavor: false }
         ];
 
         let cart = {};
+        let activeDrinkSubcat = 'all';
 
         function renderMenu(category) {
             const container = document.getElementById('menu-container');
-            const filtered = menuItems.filter(i => i.category === category);
+            let filtered = menuItems.filter(i => i.category === category);
 
-            let html = '<div class="menu-grid">';
+            let subcatFilterHtml = '';
+
+            // Handle Sub-category Filtering for Soft Drinks
+            if (category === 'drinks') {
+                subcatFilterHtml = `
+                    <div class="subcategory-filter">
+                        <button class="sub-cat-btn ${activeDrinkSubcat === 'all' ? 'active' : ''}" onclick="filterDrinkSubcat('all')">All / الكل</button>
+                        <button class="sub-cat-btn ${activeDrinkSubcat === 'small' ? 'active' : ''}" onclick="filterDrinkSubcat('small')">Small / Can</button>
+                        <button class="sub-cat-btn ${activeDrinkSubcat === 'medium' ? 'active' : ''}" onclick="filterDrinkSubcat('medium')">Medium (1L - 5 SAR)</button>
+                        <button class="sub-cat-btn ${activeDrinkSubcat === 'large' ? 'active' : ''}" onclick="filterDrinkSubcat('large')">Large (2.25L - 9 SAR)</button>
+                    </div>
+                `;
+
+                if (activeDrinkSubcat !== 'all') {
+                    filtered = filtered.filter(i => i.subcategory === activeDrinkSubcat);
+                }
+            }
+
+            let html = subcatFilterHtml + '<div class="menu-grid">';
             filtered.forEach(item => {
                 let optionsHtml = '';
                 let defaultPrice = item.price ? item.price.toFixed(2) + ' SR' : '';
@@ -905,6 +969,11 @@
             container.innerHTML = html;
         }
 
+        function filterDrinkSubcat(subcat) {
+            activeDrinkSubcat = subcat;
+            renderMenu('drinks');
+        }
+
         function updateItemPriceDisplay(itemId, price) {
             const el = document.getElementById(`price_disp_${itemId}`);
             if (el) el.innerText = price.toFixed(2) + ' SR';
@@ -915,6 +984,7 @@
             let targetBtn = event.currentTarget || event.target;
             if(!targetBtn.classList.contains('cat-btn')) targetBtn = targetBtn.closest('.cat-btn');
             targetBtn.classList.add('active');
+            activeDrinkSubcat = 'all'; // reset subcategory on main category switch
             renderMenu(cat);
         }
 
