@@ -329,7 +329,7 @@
             color: #fff8e1;
         }
 
-        /* Sub-category Filter Buttons */
+        /* Sub-category Filter Buttons (Updated for bilingual support) */
         .subcategory-filter {
             display: flex;
             justify-content: center;
@@ -343,7 +343,7 @@
             flex: 1;
             padding: 8px 4px;
             border: 1px solid #0288d1;
-            border-radius: 20px;
+            border-radius: 14px;
             background: #e1f5fe;
             color: #0288d1;
             font-weight: 700;
@@ -351,12 +351,27 @@
             cursor: pointer;
             transition: all 0.2s ease;
             text-align: center;
-            white-space: nowrap;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.25;
+        }
+
+        .sub-cat-btn span.ar-txt {
+            font-size: 10px;
+            font-weight: 600;
+            margin-top: 2px;
+            display: block;
         }
 
         .sub-cat-btn.active, .sub-cat-btn:hover {
             background: #0288d1;
             color: white;
+        }
+
+        .sub-cat-btn.active span.ar-txt, .sub-cat-btn:hover span.ar-txt {
+            color: #e0f7fa;
         }
 
         .container {
@@ -912,13 +927,19 @@
 
             let subcatFilterHtml = '';
 
-            // Handle Sub-category Filtering for Soft Drinks
+            // Handle Sub-category Filtering for Soft Drinks (Updated with Arabic texts)
             if (category === 'drinks') {
                 subcatFilterHtml = `
                     <div class="subcategory-filter">
-                        <button class="sub-cat-btn ${activeDrinkSubcat === 'small' ? 'active' : ''}" onclick="filterDrinkSubcat('small')">Small / Can</button>
-                        <button class="sub-cat-btn ${activeDrinkSubcat === 'medium' ? 'active' : ''}" onclick="filterDrinkSubcat('medium')">Medium (1L - 5 SAR)</button>
-                        <button class="sub-cat-btn ${activeDrinkSubcat === 'large' ? 'active' : ''}" onclick="filterDrinkSubcat('large')">Large (2.25L - 9 SAR)</button>
+                        <button class="sub-cat-btn ${activeDrinkSubcat === 'small' ? 'active' : ''}" onclick="filterDrinkSubcat('small')">
+                            Small / Can<span class="ar-txt">صغير / علبة</span>
+                        </button>
+                        <button class="sub-cat-btn ${activeDrinkSubcat === 'medium' ? 'active' : ''}" onclick="filterDrinkSubcat('medium')">
+                            Medium (1L - 5 SAR)<span class="ar-txt">وسط (١ لتر - ٥ ر.س)</span>
+                        </button>
+                        <button class="sub-cat-btn ${activeDrinkSubcat === 'large' ? 'active' : ''}" onclick="filterDrinkSubcat('large')">
+                            Large (2.25L - 9 SAR)<span class="ar-txt">كبير (٢.٢٥ لتر - ٩ ر.س)</span>
+                        </button>
                     </div>
                 `;
 
