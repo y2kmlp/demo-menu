@@ -831,14 +831,18 @@
             { id: 'b6', nameEn: 'Chicken Zinger 4Pcs', nameAr: 'زنجر دجاج 4 قطع', category: 'broasted', price: 23.00, desc: 'CAL 1873', hasFlavor: true },
             { id: 'b7', nameEn: 'Shrimp Broasted', nameAr: 'بروستد روبيان', category: 'broasted', price: 23.00, desc: 'CAL 1719', hasFlavor: true, isShrimp: true },
             { id: 'b8', nameEn: 'Super Fish 6Pcs', nameAr: 'سوبر سمك ٦ قطع', category: 'broasted', price: 23.00, desc: 'CAL 1885', hasFlavor: false },
+            { id: 'b9', nameEn: 'Chicken Fillet 4Pcs', nameAr: 'فيليه دجاج ٤ قطع', category: 'broasted', price: 20.00, desc: 'CAL 1875', hasFlavor: true },
 
             // 2. Shawarma (شاورما)
-            { id: 's1', nameEn: 'Shawarma Sandwich', nameAr: 'ساندوتش شاورما', category: 'shawarma', price: 6.00, desc: 'CAL 352', hasFlavor: false },
-            { id: 's3', nameEn: 'Saroukh Saj Shawarma', nameAr: 'صاروخ صاج شاورما', category: 'shawarma', price: 12.00, desc: 'CAL 676 (Add cheese +1 SR)', hasFlavor: false },
-            { id: 's4', nameEn: 'Jambo Shawarma', nameAr: 'شاورما جامبو', category: 'shawarma', price: 12.00, desc: 'CAL 525', hasFlavor: false },
-            { id: 's6', nameEn: 'Shawarma Arabian', nameAr: 'شاورما عربي', category: 'shawarma', price: 15.00, desc: 'CAL 753', hasFlavor: false },
-            { id: 's7', nameEn: 'Plate Shawarma', nameAr: 'صحن شاورما', category: 'shawarma', price: 15.00, desc: 'CAL 724', hasFlavor: false },
-            { id: 's8', nameEn: 'Kufi Shawarma 10Pcs', nameAr: 'شاورما كوفي 10 قطع', category: 'shawarma', price: 25.00, desc: 'CAL 1506', hasFlavor: false },
+            { id: 's1', nameEn: 'Shawarma Sandwich', nameAr: 'ساندوتش شاورما', category: 'shawarma', desc: 'CAL 352', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Normal', labelAr: 'عادي', price: 6.00}, {labelEn: 'With Cheese', labelAr: 'مع جبن', price: 7.00} ] },
+            { id: 's3', nameEn: 'Saroukh Saj Shawarma', nameAr: 'صاروخ صاج شاورما', category: 'shawarma', desc: 'CAL 676', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Normal', labelAr: 'عادي', price: 12.00}, {labelEn: 'With Cheese', labelAr: 'مع جبن', price: 13.00} ] },
+            { id: 's4', nameEn: 'Jambo Shawarma', nameAr: 'شاورما جامبو', category: 'shawarma', desc: 'CAL 525', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Normal', labelAr: 'عادي', price: 12.00}, {labelEn: 'With Cheese', labelAr: 'مع جبن', price: 13.00} ] },
+            { id: 's6', nameEn: 'Shawarma Arabian', nameAr: 'شاورما عربي', category: 'shawarma', desc: 'CAL 753', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Normal', labelAr: 'عادي', price: 15.00}, {labelEn: 'With Cheese', labelAr: 'مع جبن', price: 16.00} ] },
+            { id: 's8', nameEn: 'Kufi Shawarma 10Pcs', nameAr: 'شاورما كوفي 10 قطع', category: 'shawarma', desc: 'CAL 1506', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Normal', labelAr: 'عادي', price: 25.00}, {labelEn: 'With Cheese', labelAr: 'مع جبن', price: 27.00} ] },
+            { id: 's7', nameEn: 'Plate Shawarma', nameAr: 'صحن شاورما', category: 'shawarma', hasSizes: true, sizes: [ {labelEn: 'Small (CAL 724)', labelAr: 'صغير', price: 15.00}, {labelEn: 'Big', labelAr: 'كبير', price: 24.00} ] },
+            { id: 's9', nameEn: 'Shawarma Tortilla Box', nameAr: 'علبة شاورما تورتيلا', category: 'shawarma', price: 35.00, desc: 'CAL 1530', hasFlavor: false },
+            { id: 's10', nameEn: 'Box Shawarma', nameAr: 'علبة شاورما', category: 'shawarma', desc: 'CAL 810', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Normal', labelAr: 'عادي', price: 15.00}, {labelEn: 'With Cheese', labelAr: 'مع جبن', price: 16.00} ] },
+            { id: 's11', nameEn: 'Salad Shawarma', nameAr: 'سلطة شاورما', category: 'shawarma', desc: 'CAL 650', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Normal', labelAr: 'عادي', price: 15.00}, {labelEn: 'With Cheese', labelAr: 'مع جبن', price: 16.00} ] },
 
             // 3. Tortilla (تورتيلا)
             { id: 't1', nameEn: 'Beef Kabab Tortilla', nameAr: 'تورتيلا كباب لحم', category: 'tortilla', price: 12.00, desc: 'CAL 832', hasFlavor: false },
@@ -968,6 +972,18 @@
                             </div>
                         `;
                     }
+                } else if (item.hasCheeseOpt) {
+                    optionsHtml = '<div class="option-selection">';
+                    item.cheeseOptions.forEach((opt, idx) => {
+                        optionsHtml += `
+                            <label>
+                                <input type="radio" name="opt_${item.id}" value="${idx}" ${idx === 0 ? 'checked' : ''} onchange="updateItemPriceDisplay('${item.id}', ${opt.price})"> 
+                                ${opt.labelEn} / ${opt.labelAr} - ${opt.price} SR
+                            </label><br>
+                        `;
+                    });
+                    optionsHtml += '</div>';
+                    defaultPrice = item.cheeseOptions[0].price.toFixed(2) + ' SR';
                 } else if (item.hasSizes) {
                     optionsHtml = '<div class="option-selection">';
                     item.sizes.forEach((sz, idx) => {
@@ -1052,6 +1068,16 @@
                             optKey = '_normal';
                         }
                     }
+                }
+            } else if (item.hasCheeseOpt) {
+                const selected = document.querySelector(`input[name="opt_${id}"]:checked`);
+                if (selected) {
+                    const idx = parseInt(selected.value);
+                    const opt = item.cheeseOptions[idx];
+                    finalPrice = opt.price;
+                    optEn = ` (${opt.labelEn})`;
+                    optAr = ` (${opt.labelAr})`;
+                    optKey = `_ch_${idx}`;
                 }
             } else if (item.hasSizes) {
                 const selected = document.querySelector(`input[name="opt_${id}"]:checked`);
