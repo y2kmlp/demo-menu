@@ -845,7 +845,7 @@
             { id: 's11', nameEn: 'Salad Shawarma', nameAr: 'سلطة شاورما', category: 'shawarma', desc: 'CAL 650', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Normal', labelAr: 'عادي', price: 15.00}, {labelEn: 'With Cheese', labelAr: 'مع جبن', price: 16.00} ] },
 
             // 3. Tortilla (تورتيلا)
-            { id: 't2', nameEn: 'Chicken Tortilla', nameAr: 'تورتيلا دجاج', category: 'tortilla', price: 12.00, desc: 'CAL 806', hasFlavor: true },
+            { id: 't2', nameEn: 'Chicken Tortilla', nameAr: 'تورتيلا دجاج', category: 'tortilla', desc: 'CAL 806', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Spicy', labelAr: 'حراق', price: 13.00}, {labelEn: 'Normal', labelAr: 'عادي', price: 12.00} ] },
             { id: 't4', nameEn: 'Zinger Tortilla', nameAr: 'تورتيلا زنجر', category: 'tortilla', price: 15.00, desc: 'CAL 826', hasFlavor: true },
             { id: 't5', nameEn: 'Chicken Strip Tortilla', nameAr: 'تورتيلا ستريبس دجاج', category: 'tortilla', price: 10.00, desc: 'CAL 806', hasFlavor: true },
             { id: 't6', nameEn: 'Chicken Tikka Tortilla', nameAr: 'تورتيلا تكا دجاج', category: 'tortilla', price: 14.00, desc: 'CAL 725', hasFlavor: true },
@@ -864,14 +864,15 @@
             { id: 'sw9', nameEn: 'Mini Musahab Sandwich', nameAr: 'ميني سندويش مسحب', category: 'sandwiches', price: 6.00, desc: 'CAL 162', hasFlavor: false },
 
             // 5. Burgers (برجر)
-            { id: 'bg1', nameEn: 'Beef Burger', nameAr: 'برجر لحم', category: 'burgers', desc: 'CAL 856', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Normal', labelAr: 'عادي', price: 7.00}, {labelEn: 'With Cheese', labelAr: 'مع جبن', price: 8.00} ] },
-            { id: 'bg2', nameEn: 'Chicken Burger', nameAr: 'برجر دجاج', category: 'burgers', desc: 'CAL 724', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Normal', labelAr: 'عادي', price: 7.00}, {labelEn: 'With Cheese', labelAr: 'مع جبن', price: 8.00} ] },
+            { id: 'bg1', nameEn: 'Beef Burger', nameAr: 'برجر لحم', category: 'burgers', price: 8.00, desc: 'CAL 856', hasFlavor: false },
+            { id: 'bg2', nameEn: 'Chicken Burger', nameAr: 'برجر دجاج', category: 'burgers', price: 8.00, desc: 'CAL 724', hasFlavor: false },
             { id: 'bg3', nameEn: 'Zinger Burger', nameAr: 'برجر زنجر', category: 'burgers', price: 12.00, desc: 'CAL 856', hasFlavor: true },
-            { id: 'bg5', nameEn: 'Fish Burger', nameAr: 'برجر سمك', category: 'burgers', price: 12.00, desc: 'CAL 828', hasFlavor: false },
+            { id: 'bg5', nameEn: 'Fish Burger', nameAr: 'برجر سمك', category: 'burgers', price: 10.00, desc: 'CAL 828', hasFlavor: false },
             { id: 'bg4', nameEn: 'Box Crunchy Burger', nameAr: 'علبة برجر كرانشي', category: 'burgers', price: 16.00, desc: 'With onion rings, fries & sauce', hasFlavor: true },
 
             // 6. Sauces (صلصات)
             { id: 'sc1', nameEn: 'Garlic Sauce', nameAr: 'صلصة الثوم', category: 'sauces', price: 1.00, desc: 'CAL 95', hasFlavor: false },
+            { id: 'sc8', nameEn: 'Garlic Spicy Sauce', nameAr: 'صلصة ثوم حار', category: 'sauces', price: 2.00, desc: 'CAL 95', hasFlavor: false },
             { id: 'sc2', nameEn: 'Ranch Sauce', nameAr: 'صلصة رانش', category: 'sauces', price: 2.00, desc: 'CAL 82', hasFlavor: false },
             { id: 'sc3', nameEn: 'BBQ Sauce', nameAr: 'صلصة باربيكيو', category: 'sauces', price: 2.00, desc: 'CAL 86', hasFlavor: false },
             { id: 'sc4', nameEn: 'Chipotle Sauce', nameAr: 'صلصة شبيوتلي', category: 'sauces', price: 2.00, desc: 'CAL 20', hasFlavor: false },
@@ -885,7 +886,7 @@
             { id: 'sd3', nameEn: 'Onion Rings', nameAr: 'حلقات بصل', category: 'sides', price: 7.00, desc: 'CAL 314', hasFlavor: false },
             { id: 'sd4', nameEn: 'Wedges Fries', nameAr: 'ودجز', category: 'sides', price: 7.00, desc: 'CAL 369', hasFlavor: false },
             { id: 'sd5', nameEn: 'French Fries', nameAr: 'بطاطس مقلية', category: 'sides', hasSizes: true, sizes: [ {labelEn: 'Small', labelAr: 'صغير', price: 4.00}, {labelEn: 'Big', labelAr: 'كبير', price: 6.00} ] },
-            { id: 'sd6', nameEn: 'Mozzarella Sticks', nameAr: 'أصابع موزاريلا', category: 'sides', price: 10.00, desc: 'Crispy Mozzarella Sticks', hasFlavor: false },
+            { id: 'sd6', nameEn: 'Mozzarella Sticks', nameAr: 'أصابع موزاريلا', category: 'sides', price: 10.00, desc: 'CAL 225, 3 Pcs', hasFlavor: false },
 
             // 8. Juices (عصير طازج)
             { id: 'j1', nameEn: 'Cocktail Juice', nameAr: 'عصير كوكتيل', category: 'juices', hasSizes: true, sizes: [ {labelEn: 'Med (وسط)', labelAr: 'وسط', price: 7.00}, {labelEn: 'Big (كبير)', labelAr: 'كبير', price: 8.00}, {labelEn: 'Gallon 1.5L (جالون)', labelAr: 'جالون', price: 20.00} ] },
