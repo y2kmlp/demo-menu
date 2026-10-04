@@ -845,23 +845,30 @@
             { id: 's11', nameEn: 'Salad Shawarma', nameAr: 'سلطة شاورما', category: 'shawarma', desc: 'CAL 650', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Normal', labelAr: 'عادي', price: 15.00}, {labelEn: 'With Cheese', labelAr: 'مع جبن', price: 16.00} ] },
 
             // 3. Tortilla (تورتيلا)
-            { id: 't1', nameEn: 'Beef Kabab Tortilla', nameAr: 'تورتيلا كباب لحم', category: 'tortilla', price: 12.00, desc: 'CAL 832', hasFlavor: false },
             { id: 't2', nameEn: 'Chicken Tortilla', nameAr: 'تورتيلا دجاج', category: 'tortilla', price: 12.00, desc: 'CAL 806', hasFlavor: true },
-            { id: 't3', nameEn: 'Shrimp Tortilla', nameAr: 'تورتيلا روبيان', category: 'tortilla', price: 13.00, desc: 'CAL 832', hasFlavor: true },
             { id: 't4', nameEn: 'Zinger Tortilla', nameAr: 'تورتيلا زنجر', category: 'tortilla', price: 15.00, desc: 'CAL 826', hasFlavor: true },
             { id: 't5', nameEn: 'Chicken Strip Tortilla', nameAr: 'تورتيلا ستريبس دجاج', category: 'tortilla', price: 10.00, desc: 'CAL 806', hasFlavor: true },
             { id: 't6', nameEn: 'Chicken Tikka Tortilla', nameAr: 'تورتيلا تكا دجاج', category: 'tortilla', price: 14.00, desc: 'CAL 725', hasFlavor: true },
+            { id: 't1', nameEn: 'Kabab Tortilla', nameAr: 'تورتيلا كباب', category: 'tortilla', price: 12.00, desc: 'CAL 832', hasCustomOptions: true, customOptions: [ {labelEn: 'Beef', labelAr: 'لحم'}, {labelEn: 'Chicken', labelAr: 'دجاج'} ] },
+            { id: 't3', nameEn: 'Shrimp Tortilla', nameAr: 'تورتيلا روبيان', category: 'tortilla', price: 13.00, desc: 'CAL 832', hasFlavor: true },
 
             // 4. Sandwiches (ساندويشات)
-            { id: 'sw1', nameEn: 'Chicken Strip Sandwich', nameAr: 'ساندوتش ستريبس دجاج', category: 'sandwiches', price: 11.00, desc: 'CAL 883', hasFlavor: true },
-            { id: 'sw2', nameEn: 'Kabab Sandwich', nameAr: 'ساندوتش كباب', category: 'sandwiches', price: 11.00, desc: 'CAL 875', hasFlavor: false },
-            { id: 'sw3', nameEn: 'Shrimp Sandwich', nameAr: 'ساندوتش روبيان', category: 'sandwiches', price: 13.00, desc: 'CAL 826', hasFlavor: true },
+            { id: 'sw4', nameEn: 'Kufi Chicken Sandwich', nameAr: 'سندويش كوفي دجاج', category: 'sandwiches', price: 11.00, desc: 'CAL 844', hasFlavor: false },
+            { id: 'sw1', nameEn: 'Kufi Chicken Fillet Sandwich', nameAr: 'سندويش كوفي دجاج فيليه', category: 'sandwiches', price: 11.00, desc: 'CAL 832', hasFlavor: true },
+            { id: 'sw2', nameEn: 'Kabab Sandwich', nameAr: 'سندويش كباب', category: 'sandwiches', price: 11.00, desc: 'CAL 875', hasCustomOptions: true, customOptions: [ {labelEn: 'Chicken', labelAr: 'دجاج'}, {labelEn: 'Beef', labelAr: 'لحم'} ] },
+            { id: 'sw5', nameEn: 'Kufi Fish Sandwich', nameAr: 'سندويش كوفي سمك', category: 'sandwiches', price: 11.00, desc: 'CAL 826', hasFlavor: false },
+            { id: 'sw3', nameEn: 'Kufi Shrimp Sandwich', nameAr: 'سندويش كوفي روبيان', category: 'sandwiches', price: 13.00, desc: 'CAL 826', hasFlavor: true },
+            { id: 'sw6', nameEn: 'Mini Fish Sandwich', nameAr: 'ميني سندويش سمك', category: 'sandwiches', price: 6.00, desc: 'CAL 170', hasFlavor: false },
+            { id: 'sw7', nameEn: 'Mini Strips Sandwich', nameAr: 'ميني سندويش ستريبس', category: 'sandwiches', price: 6.00, desc: 'CAL 178', hasFlavor: false },
+            { id: 'sw8', nameEn: 'Mini Shrimp Sandwich', nameAr: 'ميني سندويش روبيان', category: 'sandwiches', price: 6.00, desc: 'CAL 168', hasFlavor: false },
+            { id: 'sw9', nameEn: 'Mini Musahab Sandwich', nameAr: 'ميني سندويش مسحب', category: 'sandwiches', price: 6.00, desc: 'CAL 162', hasFlavor: false },
 
             // 5. Burgers (برجر)
-            { id: 'bg1', nameEn: 'Beef Cheese Burger', nameAr: 'برجر لحم بالجبن', category: 'burgers', price: 8.00, desc: 'CAL 856', hasFlavor: false },
-            { id: 'bg2', nameEn: 'Chicken Cheese Burger', nameAr: 'برجر دجاج بالجبن', category: 'burgers', price: 8.00, desc: 'CAL 724', hasFlavor: false },
-            { id: 'bg3', nameEn: 'Zinger Cheese Burger', nameAr: 'برجر زنجر بالجبن', category: 'burgers', price: 12.00, desc: 'CAL 856', hasFlavor: true },
-            { id: 'bg4', nameEn: 'Crunchy Burger', nameAr: 'برجر كرانشي', category: 'burgers', price: 16.00, desc: 'With onion rings, fries & sauce', hasFlavor: true },
+            { id: 'bg1', nameEn: 'Beef Burger', nameAr: 'برجر لحم', category: 'burgers', desc: 'CAL 856', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Normal', labelAr: 'عادي', price: 7.00}, {labelEn: 'With Cheese', labelAr: 'مع جبن', price: 8.00} ] },
+            { id: 'bg2', nameEn: 'Chicken Burger', nameAr: 'برجر دجاج', category: 'burgers', desc: 'CAL 724', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Normal', labelAr: 'عادي', price: 7.00}, {labelEn: 'With Cheese', labelAr: 'مع جبن', price: 8.00} ] },
+            { id: 'bg3', nameEn: 'Zinger Burger', nameAr: 'برجر زنجر', category: 'burgers', price: 12.00, desc: 'CAL 856', hasFlavor: true },
+            { id: 'bg5', nameEn: 'Fish Burger', nameAr: 'برجر سمك', category: 'burgers', price: 12.00, desc: 'CAL 828', hasFlavor: false },
+            { id: 'bg4', nameEn: 'Box Crunchy Burger', nameAr: 'علبة برجر كرانشي', category: 'burgers', price: 16.00, desc: 'With onion rings, fries & sauce', hasFlavor: true },
 
             // 6. Sauces (صلصات)
             { id: 'sc1', nameEn: 'Garlic Sauce', nameAr: 'صلصة الثوم', category: 'sauces', price: 1.00, desc: 'CAL 95', hasFlavor: false },
@@ -870,14 +877,15 @@
             { id: 'sc4', nameEn: 'Chipotle Sauce', nameAr: 'صلصة شبيوتلي', category: 'sauces', price: 2.00, desc: 'CAL 20', hasFlavor: false },
             { id: 'sc5', nameEn: 'Dynamite Sauce', nameAr: 'صلصة ديناميت', category: 'sauces', price: 2.00, desc: 'CAL 118', hasFlavor: false },
             { id: 'sc6', nameEn: 'Cocktail Sauce', nameAr: 'صلصة كوكتيل', category: 'sauces', price: 2.00, desc: 'CAL 118', hasFlavor: false },
+            { id: 'sc7', nameEn: 'Cheese Sauce', nameAr: 'صوص الجبنة', category: 'sauces', price: 3.00, desc: '', hasFlavor: false },
 
             // 7. Sides (طلبات جانبية)
             { id: 'sd1', nameEn: 'Hummus', nameAr: 'حمص', category: 'sides', price: 3.00, desc: 'CAL 225', hasFlavor: false },
             { id: 'sd2', nameEn: 'Coleslaw', nameAr: 'كول سلو', category: 'sides', price: 3.00, desc: 'CAL 85', hasFlavor: false },
             { id: 'sd3', nameEn: 'Onion Rings', nameAr: 'حلقات بصل', category: 'sides', price: 7.00, desc: 'CAL 314', hasFlavor: false },
             { id: 'sd4', nameEn: 'Wedges Fries', nameAr: 'ودجز', category: 'sides', price: 7.00, desc: 'CAL 369', hasFlavor: false },
-            { id: 'sd5', nameEn: 'French Fries', nameAr: 'بطاطس مقلية', category: 'sides', price: 4.00, desc: 'Regular French Fries', hasFlavor: false },
-            { id: 'sd6', nameEn: 'Mozzarella Sticks', nameAr: 'أصابع موزاريلا', category: 'sides', price: 8.00, desc: 'Crispy Mozzarella Sticks', hasFlavor: false },
+            { id: 'sd5', nameEn: 'French Fries', nameAr: 'بطاطس مقلية', category: 'sides', hasSizes: true, sizes: [ {labelEn: 'Small', labelAr: 'صغير', price: 4.00}, {labelEn: 'Big', labelAr: 'كبير', price: 6.00} ] },
+            { id: 'sd6', nameEn: 'Mozzarella Sticks', nameAr: 'أصابع موزاريلا', category: 'sides', price: 10.00, desc: 'Crispy Mozzarella Sticks', hasFlavor: false },
 
             // 8. Juices (عصير طازج)
             { id: 'j1', nameEn: 'Cocktail Juice', nameAr: 'عصير كوكتيل', category: 'juices', hasSizes: true, sizes: [ {labelEn: 'Med (وسط)', labelAr: 'وسط', price: 7.00}, {labelEn: 'Big (كبير)', labelAr: 'كبير', price: 8.00}, {labelEn: 'Gallon 1.5L (جالون)', labelAr: 'جالون', price: 20.00} ] },
@@ -972,6 +980,17 @@
                             </div>
                         `;
                     }
+                } else if (item.hasCustomOptions) {
+                    optionsHtml = '<div class="option-selection">';
+                    item.customOptions.forEach((opt, idx) => {
+                        optionsHtml += `
+                            <label>
+                                <input type="radio" name="opt_${item.id}" value="${idx}" ${idx === 0 ? 'checked' : ''}> 
+                                ${opt.labelEn} (${opt.labelAr})
+                            </label><br>
+                        `;
+                    });
+                    optionsHtml += '</div>';
                 } else if (item.hasCheeseOpt) {
                     optionsHtml = '<div class="option-selection">';
                     item.cheeseOptions.forEach((opt, idx) => {
@@ -1068,6 +1087,15 @@
                             optKey = '_normal';
                         }
                     }
+                }
+            } else if (item.hasCustomOptions) {
+                const selected = document.querySelector(`input[name="opt_${id}"]:checked`);
+                if (selected) {
+                    const idx = parseInt(selected.value);
+                    const opt = item.customOptions[idx];
+                    optEn = ` (${opt.labelEn})`;
+                    optAr = ` (${opt.labelAr})`;
+                    optKey = `_opt_${idx}`;
                 }
             } else if (item.hasCheeseOpt) {
                 const selected = document.querySelector(`input[name="opt_${id}"]:checked`);
@@ -1181,7 +1209,7 @@
         }
 
         function toArabicDigits(str) {
-            return String(str).replace(/[0-9]/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+            return String(str).replace(/[0-9]/g, d => '٠١٢٣٤٥٦Territories'[d] || d);
         }
 
         function sendOrderWhatsApp() {
@@ -1208,8 +1236,8 @@
                 const itemTotal = item.price * item.qty;
                 total += itemTotal;
 
-                const qtyAr = toArabicDigits(item.qty);
-                const itemTotalAr = toArabicDigits(itemTotal.toFixed(2));
+                const qtyAr = String(item.qty).replace(/[0-9]/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+                const itemTotalAr = String(itemTotal.toFixed(2)).replace(/[0-9]/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
 
                 msg += `${item.qty} . ${item.nameEn} - ${itemTotal.toFixed(2)} SR\n`;
                 msg += `${qtyAr} . ${item.nameAr} - ${itemTotalAr} ر.س\n`;
@@ -1219,7 +1247,7 @@
                 msg += `\n`;
             }
 
-            const totalAr = toArabicDigits(total.toFixed(2));
+            const totalAr = String(total.toFixed(2)).replace(/[0-9]/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
 
             msg += `-------------------------------------\n--\n`;
             msg += ` TOTAL AMOUNT: ${total.toFixed(2)} SR\n`;
