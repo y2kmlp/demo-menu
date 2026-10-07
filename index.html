@@ -170,7 +170,6 @@
             border: 1px solid #ffcdd2;
         }
 
-        /* Mobile Specific Header Adjustments */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -386,31 +385,66 @@
             gap: 18px;
         }
 
+        /* ===== 1. COLORFUL SOFT PASTEL ITEM CARDS BY CATEGORY ===== */
         .item-card {
-            background: white;
             border-radius: 14px;
             padding: 16px;
             box-shadow: var(--card-shadow);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            border-left: 4px solid var(--primary);
             transition: all 0.25s ease;
             position: relative;
+            border: 1px solid #e0e0e0;
         }
 
         .item-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+        }
+
+        .item-card.category-broasted {
+            border-left: 5px solid #d32f2f;
+            background: linear-gradient(180deg, #ffffff 0%, #fff5f5 100%);
+        }
+
+        .item-card.category-shawarma {
+            border-left: 5px solid #e65100;
+            background: linear-gradient(180deg, #ffffff 0%, #fff8e1 100%);
+        }
+
+        .item-card.category-tortilla {
+            border-left: 5px solid #8e24aa;
+            background: linear-gradient(180deg, #ffffff 0%, #f3e5f5 100%);
+        }
+
+        .item-card.category-sandwiches {
+            border-left: 5px solid #2e7d32;
+            background: linear-gradient(180deg, #ffffff 0%, #f1f8e9 100%);
+        }
+
+        .item-card.category-burgers {
+            border-left: 5px solid #d81b60;
+            background: linear-gradient(180deg, #ffffff 0%, #fce4ec 100%);
+        }
+
+        .item-card.category-sauces {
+            border-left: 5px solid #f57c00;
+            background: linear-gradient(180deg, #ffffff 0%, #fff3e0 100%);
+        }
+
+        .item-card.category-sides {
+            border-left: 5px solid #00897b;
+            background: linear-gradient(180deg, #ffffff 0%, #e0f2f1 100%);
         }
 
         .item-card.category-juices {
-            border-left-color: #ff9800;
+            border-left: 5px solid #fb8c00;
             background: linear-gradient(180deg, #ffffff 0%, #fffde7 100%);
         }
 
         .item-card.category-drinks {
-            border-left-color: #0288d1;
+            border-left: 5px solid #0288d1;
             background: linear-gradient(180deg, #ffffff 0%, #e1f5fe 100%);
         }
 
@@ -423,7 +457,7 @@
 
         .item-info p {
             font-size: 12px;
-            color: #777;
+            color: #666;
             margin-bottom: 12px;
             font-weight: 600;
         }
@@ -435,10 +469,10 @@
             margin: 10px 0;
             font-size: 12px;
             font-weight: 600;
-            background: #fdf5f5;
+            background: rgba(255, 255, 255, 0.85);
             padding: 8px 10px;
             border-radius: 8px;
-            border: 1px dashed #ffcdd2;
+            border: 1px dashed #d1d5db;
         }
 
         .option-selection label {
@@ -455,17 +489,18 @@
             align-items: center;
             margin-top: 12px;
             padding-top: 10px;
-            border-top: 1px solid #f5f5f5;
+            border-top: 1px rgba(0,0,0,0.06) solid;
         }
 
         .item-price {
             font-weight: 800;
             color: var(--primary-dark);
             font-size: 17px;
-            background: #fff3e0;
-            padding: 2px 8px;
-            border-radius: 6px;
-            border: 1px solid #ffe0b2;
+            background: #ffffff;
+            padding: 3px 10px;
+            border-radius: 8px;
+            border: 1px solid #ffd54f;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
         }
 
         .add-btn {
@@ -531,7 +566,7 @@
             display: none;
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.65);
             z-index: 2000;
             justify-content: center;
             align-items: center;
@@ -539,14 +574,14 @@
         }
 
         .modal-content {
-            background: white;
-            border-radius: 14px;
+            background: #fdfdfd;
+            border-radius: 16px;
             padding: 20px;
             width: 100%;
-            max-width: 500px;
+            max-width: 480px;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
         }
 
         .modal-header {
@@ -558,56 +593,58 @@
             margin-bottom: 15px;
         }
 
-        .form-group {
-            margin-bottom: 12px;
+        /* ===== STEP 1: ORDER TYPE SELECTOR CARDS ===== */
+        .order-type-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 18px 0;
         }
 
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 9px 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-
-        .order-type-container {
-            display: flex;
-            gap: 15px;
-            margin-top: 5px;
-        }
-
-        .order-type-container label {
-            display: flex;
-            align-items: center;
-            gap: 5px;
+        .order-card-option {
+            background: #ffffff;
+            border: 2px solid #e0e0e0;
+            border-radius: 14px;
+            padding: 18px 10px;
+            text-align: center;
             cursor: pointer;
-            font-weight: bold;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+        }
+
+        .order-card-option:hover {
+            border-color: var(--primary);
+            background: #fff5f5;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(211, 47, 47, 0.15);
+        }
+
+        .order-card-icon {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .order-card-title-en {
             font-size: 14px;
+            font-weight: 800;
+            color: #111;
         }
 
-        .delivery-note-box {
-            background-color: #fff8e1;
-            border: 1px solid #ffe082;
-            color: #856404;
-            padding: 10px 14px;
-            border-radius: 8px;
+        .order-card-title-ar {
             font-size: 13px;
-            margin-bottom: 15px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 2px;
         }
 
+        /* ===== ITEM-WISE NOTES IN CART ===== */
         .cart-item-row {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 12px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #f0f0f0;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
         .cart-item-main {
@@ -617,16 +654,79 @@
         }
 
         .cart-item-note {
-            margin-top: 6px;
+            margin-top: 8px;
         }
 
         .cart-item-note input {
             width: 100%;
             padding: 6px 10px;
             font-size: 12px;
-            border: 1px solid #ddd;
+            border: 1px dashed #cccccc;
             border-radius: 6px;
             background: #fafafa;
+        }
+
+        .cart-item-note input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: #ffffff;
+        }
+
+        /* ===== STEP 2: MODERN CHECKOUT UI ===== */
+        .checkout-section-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .delivery-note-box {
+            background-color: #fff8e1;
+            border: 1px solid #ffe082;
+            color: #856404;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .badge-type-indicator {
+            display: inline-block;
+            background: #fff5f5;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 800;
+            margin-bottom: 12px;
         }
 
         .qty-controls {
@@ -758,33 +858,81 @@
         </footer>
     </div>
 
+    <!-- CART BOTTOM BAR -->
     <div class="cart-bar">
         <div>
             <span style="font-size: 12px; color: #666;">Total (الإجمالي):</span><br>
             <span class="cart-total" id="cart-total-display">0 SR</span>
         </div>
-        <button class="checkout-btn" onclick="openCheckoutModal()">
+        <button class="checkout-btn" onclick="openCartViewModal()">
             <i class="fab fa-whatsapp"></i> View Cart / Checkout
         </button>
     </div>
 
+    <!-- CART MODAL WITH ITEM-WISE NOTES -->
+    <div class="modal" id="cart-view-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Your Cart / سلة التسوق 🛒</h3>
+                <span style="cursor:pointer; font-size:22px; font-weight:bold;" onclick="closeCartViewModal()">&times;</span>
+            </div>
+
+            <div id="cart-items-list" style="max-height: 280px; overflow-y: auto;"></div>
+
+            <div style="background: #fff3e0; padding: 12px; border-radius: 8px; margin-top: 15px; border: 1px solid #ffe0b2;">
+                <div style="display:flex; justify-content:space-between; font-weight:bold; font-size:16px; color:var(--primary);">
+                    <span>Subtotal / المبلغ الإجمالي:</span>
+                    <span id="cart-subtotal-val">0 SR</span>
+                </div>
+            </div>
+
+            <button class="checkout-btn" style="width: 100%; margin-top: 15px; justify-content: center;" onclick="proceedToOrderTypeStep()">
+                Proceed to Checkout / متابعة الطلب ➡
+            </button>
+        </div>
+    </div>
+
+    <!-- STEP 1 MODAL: ORDER TYPE SELECTION (DELIVERY OR PICKUP) -->
+    <div class="modal" id="order-type-modal">
+        <div class="modal-content" style="text-align: center;">
+            <div class="modal-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <span style="cursor:pointer; font-size: 18px; font-weight: bold; color: var(--primary);" onclick="backToCartFromOrderType()">⬅️</span>
+                    <h3>Select Order Type / اختر نوع الطلب</h3>
+                </div>
+                <span style="cursor:pointer; font-size:22px; font-weight:bold;" onclick="closeOrderTypeModal()">&times;</span>
+            </div>
+
+            <p style="font-size: 13px; color: #555; margin-top: 5px;">Please choose how you would like to receive your order:<br>الرجاء اختيار طريقة استلام الطلب:</p>
+
+            <div class="order-type-cards">
+                <div class="order-card-option" onclick="selectTypeAndProceed('Delivery')">
+                    <div class="order-card-icon">🚚</div>
+                    <div class="order-card-title-en">Delivery</div>
+                    <div class="order-card-title-ar">توصيل للمنزل</div>
+                </div>
+                <div class="order-card-option" onclick="selectTypeAndProceed('Pickup')">
+                    <div class="order-card-icon">🛍️</div>
+                    <div class="order-card-title-en">Pick up</div>
+                    <div class="order-card-title-ar">استلام من الفرع</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 2 MODAL: MODERN CLEAN CHECKOUT FORM -->
     <div class="modal" id="checkout-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Checkout Details / تفاصيل الطلب</h3>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <span style="cursor:pointer; font-size: 18px; font-weight: bold; color: var(--primary);" onclick="backToOrderTypeFromCheckout()">⬅️</span>
+                    <h3>Checkout Details / تفاصيل الطلب</h3>
+                </div>
                 <span style="cursor:pointer; font-size:20px;" onclick="closeCheckoutModal()">&times;</span>
             </div>
 
-            <div id="cart-items-list"></div>
-
-            <hr style="margin: 15px 0;">
-
-            <div class="form-group">
-                <label>Order Type / نوع الطلب:</label>
-                <div class="order-type-container">
-                    <label><input type="radio" name="orderType" value="Delivery" checked onclick="toggleDeliveryNote(true)"> Delivery / توصيل</label>
-                    <label><input type="radio" name="orderType" value="Pickup" onclick="toggleDeliveryNote(false)"> Pickup / استلام من الفرع</label>
-                </div>
+            <div style="text-align: center;">
+                <span class="badge-type-indicator" id="selectedTypeBadge">Type: DELIVERY</span>
             </div>
 
             <div class="delivery-note-box" id="delivery-note">
@@ -797,25 +945,27 @@
                 </ul>
             </div>
 
-            <div class="form-group">
-                <label>Name / الاسم:</label>
-                <input type="text" id="cust-name" placeholder="Enter full name">
-            </div>
+            <div class="checkout-section-card">
+                <div class="form-group">
+                    <label>Name / الاسم *:</label>
+                    <input type="text" id="cust-name" placeholder="Enter full name / اكتب الاسم كامل">
+                </div>
 
-            <div class="form-group" id="address-group">
-                <label>Address / العنوان:</label>
-                <input type="text" id="cust-address" placeholder="Neighborhood, Street name...">
-            </div>
+                <div class="form-group" id="address-group">
+                    <label>Address / العنوان *:</label>
+                    <input type="text" id="cust-address" placeholder="Neighborhood, Street name / الحي، اسم الشارع">
+                </div>
 
-            <div style="background: #fff3e0; padding: 12px; border-radius: 8px; margin-top: 10px; border: 1px solid #ffe0b2;">
-                <div style="display:flex; justify-content:space-between; font-weight:bold; font-size:16px; color:var(--primary);">
-                    <span>Total Amount / المبلغ الإجمالي:</span>
-                    <span id="final-total-val">0 SR</span>
+                <div class="form-group">
+                    <label>Overall Order Notes / Arrival Time (ملاحظات عامة / وقت الوصول):</label>
+                    <input type="text" id="cust-overall-note" placeholder="e.g. Arrive before 8 PM / سأصل الساعة 8">
                 </div>
             </div>
 
-            <button class="checkout-btn" style="width: 100%; margin-top: 15px; justify-content: center;" onclick="sendOrderWhatsApp()">
-                <i class="fab fa-whatsapp"></i> Send via WhatsApp
+            <div class="checkout-section-card" id="checkout-order-summary" style="font-size: 13px;"></div>
+
+            <button class="checkout-btn" style="width: 100%; margin-top: 10px; justify-content: center;" onclick="sendOrderWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Send via WhatsApp / ارسال الطلب
             </button>
         </div>
     </div>
@@ -903,8 +1053,7 @@
             { id: 'j12', nameEn: 'Orange Squeeze Juice', nameAr: 'عصير برتقال كبس', category: 'juices', hasSizes: true, sizes: [ {labelEn: 'Med (وسط)', labelAr: 'وسط', price: 9.00}, {labelEn: 'Big (كبير)', labelAr: 'كبير', price: 10.00} ] },
             { id: 'j13', nameEn: 'Layers Juice', nameAr: 'عصير طبقات', category: 'juices', hasSizes: true, sizes: [ {labelEn: 'Med (وسط)', labelAr: 'وسط', price: 9.00}, {labelEn: 'Big (كبير)', labelAr: 'كبير', price: 10.00} ] },
 
-            // 9. Soft Drinks - Sub-categories Reorganized (مشروبات غازية)
-            // Small / Can
+            // 9. Soft Drinks (مشروبات غازية)
             { id: 'd1', nameEn: 'Water', nameAr: 'مياه', category: 'drinks', subcategory: 'small', price: 1.00, desc: 'Bottled Water', hasFlavor: false },
             { id: 'd2', nameEn: 'Aseer Rabea', nameAr: 'عصير ربيع', category: 'drinks', subcategory: 'small', price: 2.00, desc: 'Tetra Pack', hasFlavor: false },
             { id: 'd3', nameEn: 'Pepsi', nameAr: 'بيبسي', category: 'drinks', subcategory: 'small', price: 3.00, desc: '330ml Can', hasFlavor: false },
@@ -916,7 +1065,6 @@
             { id: 'd8', nameEn: 'Pepsi Diet', nameAr: 'بيبسي دايت', category: 'drinks', subcategory: 'small', price: 3.00, desc: '330ml Can', hasFlavor: false },
             { id: 'd9', nameEn: '7Up Diet', nameAr: 'سفن أب دايت', category: 'drinks', subcategory: 'small', price: 3.00, desc: '330ml Can', hasFlavor: false },
 
-            // Medium Family Bottle (1 Liter - 5 SAR)
             { id: 'dm1', nameEn: 'Pepsi (1 Liter)', nameAr: 'بيبسي (1 لتر)', category: 'drinks', subcategory: 'medium', price: 5.00, desc: '1 Liter Family Bottle', hasFlavor: false },
             { id: 'dm2', nameEn: 'Miranda Citrus (1 Liter)', nameAr: 'میرندا حمضيات (1 لتر)', category: 'drinks', subcategory: 'medium', price: 5.00, desc: '1 Liter Family Bottle', hasFlavor: false },
             { id: 'dm3', nameEn: 'Miranda Orange (1 Liter)', nameAr: 'میرندا برتقال (1 لتر)', category: 'drinks', subcategory: 'medium', price: 5.00, desc: '1 Liter Family Bottle', hasFlavor: false },
@@ -924,7 +1072,6 @@
             { id: 'dm5', nameEn: 'Mountain Dew (1 Liter)', nameAr: 'ماونتن ديو (1 لتر)', category: 'drinks', subcategory: 'medium', price: 5.00, desc: '1 Liter Family Bottle', hasFlavor: false },
             { id: 'dm6', nameEn: 'Pepsi Diet (1 Liter)', nameAr: 'بيبسي دايت (1 لتر)', category: 'drinks', subcategory: 'medium', price: 5.00, desc: '1 Liter Family Bottle', hasFlavor: false },
 
-            // Large Family Bottle (2.25 Liter - 9 SAR)
             { id: 'dl1', nameEn: 'Pepsi (2.25 Liter)', nameAr: 'بيبسي (2.25 لتر)', category: 'drinks', subcategory: 'large', price: 9.00, desc: '2.25 Liter Family Bottle', hasFlavor: false },
             { id: 'dl2', nameEn: 'Miranda Citrus (2.25 Liter)', nameAr: 'میرندا حمضيات (2.25 لتر)', category: 'drinks', subcategory: 'large', price: 9.00, desc: '2.25 Liter Family Bottle', hasFlavor: false },
             { id: 'dl3', nameEn: 'Miranda Orange (2.25 Liter)', nameAr: 'میرندا برتقال (2.25 لتر)', category: 'drinks', subcategory: 'large', price: 9.00, desc: '2.25 Liter Family Bottle', hasFlavor: false },
@@ -934,6 +1081,7 @@
 
         let cart = {};
         let activeDrinkSubcat = 'small';
+        let currentOrderType = 'Delivery';
 
         function renderMenu(category) {
             const container = document.getElementById('menu-container');
@@ -941,7 +1089,6 @@
 
             let subcatFilterHtml = '';
 
-            // Handle Sub-category Filtering for Soft Drinks
             if (category === 'drinks') {
                 subcatFilterHtml = `
                     <div class="subcategory-filter">
@@ -1165,71 +1312,138 @@
                         <div class="cart-item-main">
                             <div>
                                 <strong>${item.nameEn} / ${item.nameAr}</strong><br>
-                                <small>${item.price.toFixed(2)} SR × ${item.qty} = ${itemTotal.toFixed(2)} SR</small>
+                                <small style="color:var(--primary); font-weight:bold;">${item.price.toFixed(2)} SR × ${item.qty} = ${itemTotal.toFixed(2)} SR</small>
                             </div>
                             <div class="qty-controls">
                                 <button class="qty-btn" onclick="changeQty('${key}', -1)">-</button>
-                                <span>${item.qty}</span>
+                                <span><b>${item.qty}</b></span>
                                 <button class="qty-btn" onclick="changeQty('${key}', 1)">+</button>
                             </div>
                         </div>
                         <div class="cart-item-note">
-                            <input type="text" placeholder="Add Note / ملاحظة خاصة (eg: no hummus, extra garlic...)" value="${item.note || ''}" onchange="updateItemNote('${key}', this.value)" oninput="updateItemNote('${key}', this.value)">
+                            <input type="text" placeholder="✏️ Item Note / ملاحظة خاصة (e.g. Extra Garlic, No Hummus...)" value="${item.note || ''}" onchange="updateItemNote('${key}', this.value)" oninput="updateItemNote('${key}', this.value)">
                         </div>
                     </div>
                 `;
             }
 
             document.getElementById('cart-total-display').innerText = total.toFixed(2) + ' SR';
-            document.getElementById('final-total-val').innerText = total.toFixed(2) + ' SR';
-            document.getElementById('cart-items-list').innerHTML = cartListHtml || '<p style="text-align:center; color:#888;">Cart is empty / السلة فارغة</p>';
+            document.getElementById('cart-subtotal-val').innerText = total.toFixed(2) + ' SR';
+            document.getElementById('cart-items-list').innerHTML = cartListHtml || '<p style="text-align:center; color:#888; padding:20px;">Your cart is empty / السلة فارغة</p>';
         }
 
-        function openCheckoutModal() {
+        /* CART MODAL FUNCTIONS */
+        function openCartViewModal() {
             if (Object.keys(cart).length === 0) {
                 alert('Please add items to your cart first! / الرجاء إضافة وجبات إلى السلة أولاً!');
                 return;
             }
+            document.getElementById('cart-view-modal').style.display = 'flex';
+        }
+
+        function closeCartViewModal() {
+            document.getElementById('cart-view-modal').style.display = 'none';
+        }
+
+        /* STEP 1: ORDER TYPE SELECTION MODAL */
+        function proceedToOrderTypeStep() {
+            if (Object.keys(cart).length === 0) {
+                alert('Your cart is empty.');
+                return;
+            }
+            closeCartViewModal();
+            document.getElementById('order-type-modal').style.display = 'flex';
+        }
+
+        function closeOrderTypeModal() {
+            document.getElementById('order-type-modal').style.display = 'none';
+        }
+
+        function backToCartFromOrderType() {
+            closeOrderTypeModal();
+            openCartViewModal();
+        }
+
+        function selectTypeAndProceed(type) {
+            currentOrderType = type;
+            closeOrderTypeModal();
+            openCheckoutModal();
+        }
+
+        /* STEP 2: CHECKOUT MODAL */
+        function openCheckoutModal() {
             document.getElementById('checkout-modal').style.display = 'flex';
+            
+            const badge = document.getElementById('selectedTypeBadge');
+            const deliveryNoteBox = document.getElementById('delivery-note');
+            const addressGroup = document.getElementById('address-group');
+
+            if (currentOrderType === 'Delivery') {
+                badge.innerText = "📍 Order Type: DELIVERY (توصيل للمنزل)";
+                badge.style.background = "#fff5f5";
+                badge.style.color = "var(--primary)";
+                badge.style.borderColor = "var(--primary)";
+                deliveryNoteBox.style.display = 'block';
+                addressGroup.style.display = 'block';
+            } else {
+                badge.innerText = "🛍️ Order Type: PICKUP (استلام من الفرع)";
+                badge.style.background = "#f0fdf4";
+                badge.style.color = "#16a34a";
+                badge.style.borderColor = "#86efac";
+                deliveryNoteBox.style.display = 'none';
+                addressGroup.style.display = 'none';
+            }
+
+            // Summary View
+            let summaryHTML = '<div style="font-size:14px; font-weight:bold; color:#111; margin-bottom:8px; border-bottom:1px solid #eee; padding-bottom:4px;">📋 Order Summary / ملخص الطلب</div>';
+            for (let key in cart) {
+                const i = cart[key];
+                const sub = i.price * i.qty;
+                summaryHTML += `
+                    <div style="margin-bottom:6px;">
+                        <div style="display:flex; justify-content:space-between; font-weight:bold;">
+                            <span>• ${i.nameEn} x ${i.qty}</span>
+                            <span>${sub.toFixed(2)} SR</span>
+                        </div>
+                        ${i.note ? `<div style="font-size:11px; color:#d32f2f; padding-left:12px;">📝 Note: ${i.note}</div>` : ''}
+                    </div>
+                `;
+            }
+            document.getElementById('checkout-order-summary').innerHTML = summaryHTML;
+        }
+
+        function backToOrderTypeFromCheckout() {
+            closeCheckoutModal();
+            document.getElementById('order-type-modal').style.display = 'flex';
         }
 
         function closeCheckoutModal() {
             document.getElementById('checkout-modal').style.display = 'none';
         }
 
-        function toggleDeliveryNote(isDelivery) {
-            const noteBox = document.getElementById('delivery-note');
-            const addressGroup = document.getElementById('address-group');
-            if (isDelivery) {
-                noteBox.style.display = 'block';
-                addressGroup.style.display = 'block';
-            } else {
-                noteBox.style.display = 'none';
-                addressGroup.style.display = 'none';
-            }
-        }
-
-        function toArabicDigits(str) {
-            return String(str).replace(/[0-9]/g, d => '٠١٢٣٤٥٦Territories'[d] || d);
-        }
-
         function sendOrderWhatsApp() {
             const name = document.getElementById('cust-name').value.trim();
-            const orderTypeRadio = document.querySelector('input[name="orderType"]:checked');
-            const orderType = orderTypeRadio ? orderTypeRadio.value : 'Delivery';
             const address = document.getElementById('cust-address').value.trim();
+            const overallNote = document.getElementById('cust-overall-note').value.trim();
 
             if (!name) {
                 alert('Please enter your name! / يرجى كتابة الاسم!');
                 return;
             }
 
-            if (orderType === 'Delivery' && !address) {
+            if (currentOrderType === 'Delivery' && !address) {
                 alert('Please enter your address! / يرجى كتابة العنوان!');
                 return;
             }
 
-            let msg = `--\n\n`;
+            let msg = `*NEW ORDER - KUFI BROASTED*\n`;
+            msg += `-------------------------------------\n`;
+            msg += `📦 *Type:* ${currentOrderType === 'Delivery' ? 'DELIVERY (توصيل للمنزل)' : 'PICKUP (استلام من الفرع)'}\n`;
+            msg += `👤 *Name:* ${name}\n`;
+            if (currentOrderType === 'Delivery' && address) msg += `📍 *Address:* ${address}\n`;
+            if (overallNote) msg += `📝 *Notes/Time:* ${overallNote}\n`;
+            msg += `-------------------------------------\n\n`;
+
             let total = 0;
 
             for (let key in cart) {
@@ -1240,25 +1454,23 @@
                 const qtyAr = String(item.qty).replace(/[0-9]/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
                 const itemTotalAr = String(itemTotal.toFixed(2)).replace(/[0-9]/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
 
-                msg += `${item.qty} . ${item.nameEn} - ${itemTotal.toFixed(2)} SR\n`;
+                msg += `*${item.qty} . ${item.nameEn} - ${itemTotal.toFixed(2)} SR*\n`;
                 msg += `${qtyAr} . ${item.nameAr} - ${itemTotalAr} ر.س\n`;
                 if (item.note && item.note.trim() !== '') {
-                    msg += `📝 Note: ${item.note.trim()}\n`;
+                    msg += `   ↳ 📝 *Note:* ${item.note.trim()}\n`;
                 }
                 msg += `\n`;
             }
 
             const totalAr = String(total.toFixed(2)).replace(/[0-9]/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
 
-            msg += `-------------------------------------\n--\n`;
-            msg += ` TOTAL AMOUNT: ${total.toFixed(2)} SR\n`;
-            msg += ` المبلغ الإجمالي: ${totalAr} ر.س\n`;
-            msg += `-------------------------------------\n--\n\n`;
+            msg += `-------------------------------------\n`;
+            msg += `💵 *TOTAL AMOUNT: ${total.toFixed(2)} SR*\n`;
+            msg += `💵 *المبلغ الإجمالي: ${totalAr} ر.س*\n`;
+            msg += `-------------------------------------\n\n`;
 
-            msg += `👤 *Name:* ${name}\n`;
-            msg += `📦 *Order Type:* ${orderType === 'Delivery' ? 'Delivery (توصيل)' : 'Pickup (استلام من الفرع)'}\n`;
-            if (orderType === 'Delivery') {
-                msg += `📍 *Address:* ${address}\n`;
+            if (currentOrderType === 'Delivery') {
+                msg += `ℹ️ *Note:*\nالمبلغ الإجمالي لا يشمل رسوم التوصيل\n(Delivery charges calculated based on distance)`;
             }
 
             const phone = "966501163652";
