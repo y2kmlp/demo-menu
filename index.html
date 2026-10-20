@@ -83,6 +83,37 @@
             border-bottom: 2px solid #f1f1f1;
         }
 
+        /* Header Side Round Badges */
+        .header-side-badge {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border: 2px solid #e65100;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            padding: 4px;
+        }
+
+        .header-side-badge span.badge-title {
+            font-size: 9px;
+            font-weight: 800;
+            color: #b71c1c;
+            line-height: 1;
+        }
+
+        .header-side-badge span.badge-year {
+            font-size: 11px;
+            font-weight: 800;
+            color: #e65100;
+            margin-top: 2px;
+            line-height: 1;
+        }
+
         .logo-container {
             display: flex;
             align-items: center;
@@ -198,6 +229,10 @@
                 padding: 15px 12px;
             }
 
+            .header-side-badge {
+                display: none; /* Hide side badges on very small screens if space is tight, or keep them */
+            }
+
             .logo-container {
                 flex-direction: column;
                 align-items: center;
@@ -269,30 +304,63 @@
             100% { transform: translate(100%, 0); }
         }
 
-        /* Since 1987 Vintage Banner */
-        .since-banner {
-            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
-            border: 2px dashed #e65100;
+        /* ===== SEARCH BOX & SCROLL HINT SECTION ===== */
+        .search-scroll-container {
+            max-width: 800px;
+            margin: 15px auto 5px auto;
+            padding: 0 15px;
+        }
+
+        .search-box-wrapper {
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .search-box-wrapper input {
+            width: 100%;
+            padding: 12px 15px 12px 42px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 14px;
+            background: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            transition: 0.2s;
+        }
+
+        .search-box-wrapper input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(211,47,47,0.1);
+        }
+
+        .search-box-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            font-size: 16px;
+        }
+
+        .scroll-down-banner {
+            background: linear-gradient(135deg, #d32f2f, #b71c1c);
+            color: white;
             border-radius: 12px;
             padding: 10px 15px;
             text-align: center;
-            margin: 15px auto 5px auto;
-            max-width: 800px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
-        }
-
-        .since-banner h2 {
-            color: #b71c1c;
-            font-size: 16px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-        }
-
-        .since-banner p {
-            color: #4e342e;
-            font-size: 12px;
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             font-weight: 700;
-            margin-top: 2px;
+            font-size: 14px;
+            animation: bounce-slow 2s infinite;
+        }
+
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
         }
 
         /* 3x3 Grid Category Navigation */
@@ -866,6 +934,12 @@
 
     <!-- Header Section -->
     <header id="top-header">
+        <!-- Left Side Round Badge (English) -->
+        <div class="header-side-badge">
+            <span class="badge-title">Since</span>
+            <span class="badge-year">1987</span>
+        </div>
+
         <div class="logo-container">
             <img src="logo.png" alt="Kufi Broasted" onerror="this.src='https://via.placeholder.com/55?text=Kufi'">
             <div class="brand-details">
@@ -886,6 +960,12 @@
             </div>
             <div id="store-status-badge" class="store-status status-open">...</div>
         </div>
+
+        <!-- Right Side Round Badge (Arabic) -->
+        <div class="header-side-badge">
+            <span class="badge-title">منذ</span>
+            <span class="badge-year">١٩٨٧</span>
+        </div>
     </header>
 
     <!-- 2nd Announcement Bar: Arabic (Left to Right) -->
@@ -895,10 +975,17 @@
         </div>
     </div>
 
-    <!-- Vintage 1987 Banner -->
-    <div class="since-banner">
-        <h2>🍗 SERVING YOU DELICIOUS BROASTED SINCE 1987</h2>
-        <p>١٩٨٧ منذ عام - نخدمكم بأشهى بروستد</p>
+    <!-- Search Box & Scroll Down Hint Section -->
+    <div class="search-scroll-container">
+        <div class="search-box-wrapper">
+            <i class="fas fa-search"></i>
+            <input type="text" id="menuSearchInput" placeholder="Search for products / ابحث عن الوجبات..." oninput="handleSearchInput()">
+        </div>
+        <div class="scroll-down-banner">
+            <i class="fas fa-hand-point-down"></i>
+            <span>Scroll Down For Products / أنزل للأسفل لعرض المنتجات</span>
+            <i class="fas fa-arrow-down"></i>
+        </div>
     </div>
 
     <!-- 3x3 Grid Category Navigation -->
@@ -1164,8 +1251,10 @@
         ];
 
         let cart = {};
+        let activeCategory = 'broasted';
         let activeDrinkSubcat = 'small';
         let currentOrderType = 'Delivery';
+        let searchQuery = '';
 
         function updateSaudiClockAndStatus() {
             const now = new Date();
@@ -1191,13 +1280,27 @@
             }
         }
 
+        function handleSearchInput() {
+            searchQuery = document.getElementById('menuSearchInput').value.toLowerCase().trim();
+            renderMenu(activeCategory);
+        }
+
         function renderMenu(category) {
+            activeCategory = category;
             const container = document.getElementById('menu-container');
             let filtered = menuItems.filter(i => i.category === category);
 
+            // If user typed in search box, search across all items or current category
+            if (searchQuery !== '') {
+                filtered = menuItems.filter(i => 
+                    i.nameEn.toLowerCase().includes(searchQuery) || 
+                    i.nameAr.includes(searchQuery)
+                );
+            }
+
             let subcatFilterHtml = '';
 
-            if (category === 'drinks') {
+            if (category === 'drinks' && searchQuery === '') {
                 subcatFilterHtml = `
                     <div class="subcategory-filter">
                         <button class="sub-cat-btn ${activeDrinkSubcat === 'small' ? 'active' : ''}" onclick="filterDrinkSubcat('small')">
@@ -1216,6 +1319,11 @@
             }
 
             let html = subcatFilterHtml + '<div class="menu-grid">';
+            
+            if (filtered.length === 0) {
+                html += '<p style="grid-column: 1/-1; text-align:center; color:#888; padding:30px;">No items found / لا توجد منتجات</p>';
+            }
+
             filtered.forEach(item => {
                 let optionsHtml = '';
                 let defaultPrice = item.price ? item.price.toFixed(2) + ' SR' : '';
@@ -1309,6 +1417,8 @@
             if(!targetBtn.classList.contains('cat-btn')) targetBtn = targetBtn.closest('.cat-btn');
             targetBtn.classList.add('active');
             activeDrinkSubcat = 'small';
+            document.getElementById('menuSearchInput').value = '';
+            searchQuery = '';
             renderMenu(cat);
         }
 
