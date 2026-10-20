@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kufi Broasted - كوفي بروستد</title>
+
+    <!-- Open Graph Tags for WhatsApp Preview -->
+    <meta property="og:title" content="Kufi Broasted - كوفي بروستد | Order Online 🍗">
+    <meta property="og:description" content="اضغط هنا لمشاهدة المنيو والطلب اونلاين | Digital Menu & Fast WhatsApp Ordering Since 1987">
+    <meta property="og:image" content="https://y2kmlp.github.io/kufibroast/logo.png">
+    <meta property="og:url" content="https://y2kmlp.github.io/kufibroast/">
+
     <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -107,6 +114,17 @@
             align-items: center;
             gap: 8px;
             flex-wrap: wrap;
+        }
+
+        .live-clock {
+            background: rgba(0, 0, 0, 0.75);
+            color: #ffffff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            border: 1px solid rgba(255, 235, 59, 0.6);
+            backdrop-filter: blur(4px);
         }
 
         .header-action-buttons {
@@ -385,7 +403,7 @@
             gap: 18px;
         }
 
-        /* ===== 1. COLORFUL SOFT PASTEL ITEM CARDS BY CATEGORY ===== */
+        /* ===== ITEM CARDS BY CATEGORY ===== */
         .item-card {
             border-radius: 14px;
             padding: 16px;
@@ -520,6 +538,7 @@
             box-shadow: 0 4px 12px rgba(211, 47, 47, 0.35);
         }
 
+        /* Cart Bottom Bar */
         .cart-bar {
             position: fixed;
             bottom: 0;
@@ -562,6 +581,61 @@
             transform: translateY(-1px);
         }
 
+        /* Floating Action Buttons (Home & Cart) */
+        .floating-action-container {
+            position: fixed;
+            bottom: 85px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        .floating-fab {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            text-decoration: none;
+            border: 2px solid white;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: 0.2s;
+        }
+
+        .floating-fab:hover {
+            transform: scale(1.08);
+        }
+
+        .floating-fab.cart-fab {
+            background-color: #ffffff;
+            color: #222222;
+            border: 2px solid #e0e0e0;
+        }
+
+        .cart-badge-count {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background-color: #d32f2f;
+            color: white;
+            font-size: 11px;
+            font-weight: 800;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -593,7 +667,7 @@
             margin-bottom: 15px;
         }
 
-        /* ===== STEP 1: ORDER TYPE SELECTOR CARDS ===== */
+        /* Order Type Selector Cards */
         .order-type-cards {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -637,7 +711,7 @@
             margin-top: 2px;
         }
 
-        /* ===== ITEM-WISE NOTES IN CART ===== */
+        /* Item-wise Notes in Cart */
         .cart-item-row {
             background: #ffffff;
             border-radius: 12px;
@@ -672,7 +746,7 @@
             background: #ffffff;
         }
 
-        /* ===== STEP 2: MODERN CHECKOUT UI ===== */
+        /* Checkout UI */
         .checkout-section-card {
             background: #ffffff;
             border-radius: 12px;
@@ -791,7 +865,7 @@
     </div>
 
     <!-- Header Section -->
-    <header>
+    <header id="top-header">
         <div class="logo-container">
             <img src="logo.png" alt="Kufi Broasted" onerror="this.src='https://via.placeholder.com/55?text=Kufi'">
             <div class="brand-details">
@@ -801,6 +875,7 @@
         </div>
 
         <div class="header-center-slot">
+            <div class="live-clock" id="liveClock">Saudi Time: --:--:--</div>
             <div class="header-action-buttons">
                 <a href="tel:0112376000" class="header-call-btn">
                     <i class="fas fa-phone-alt"></i> 0112376000
@@ -841,6 +916,15 @@
 
     <div class="container" id="menu-container"></div>
 
+    <!-- Floating Action Buttons (Home & Cart) -->
+    <div class="floating-action-container">
+        <a href="#top-header" class="floating-fab" title="Go to Top / الرئيسية">🏠</a>
+        <a href="javascript:void(0);" onclick="openCartViewModal()" class="floating-fab cart-fab" title="View Cart / السلة">
+            🛒
+            <span class="cart-badge-count" id="floatingCartCount" style="display: none;">0</span>
+        </a>
+    </div>
+
     <div class="container">
         <footer>
             <h3>Kufi Broasted - كوفي بروستد</h3>
@@ -859,13 +943,13 @@
     </div>
 
     <!-- CART BOTTOM BAR -->
-    <div class="cart-bar">
+    <div class="cart-bar" id="cartBar" style="display: none;">
         <div>
             <span style="font-size: 12px; color: #666;">Total (الإجمالي):</span><br>
             <span class="cart-total" id="cart-total-display">0 SR</span>
         </div>
         <button class="checkout-btn" onclick="openCartViewModal()">
-            <i class="fab fa-whatsapp"></i> View Cart / Checkout
+            <i class="fab fa-whatsapp"></i> View Cart / السلة 🛒
         </button>
     </div>
 
@@ -957,7 +1041,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Overall Order Notes / Arrival Time (ملاحظات عامة / وقت الوصول):</label>
+                    <label>Overall Order Notes / ملاحظات عامة:</label>
                     <input type="text" id="cust-overall-note" placeholder="e.g. Arrive before 8 PM / سأصل الساعة 8">
                 </div>
             </div>
@@ -965,7 +1049,7 @@
             <div class="checkout-section-card" id="checkout-order-summary" style="font-size: 13px;"></div>
 
             <button class="checkout-btn" style="width: 100%; margin-top: 10px; justify-content: center;" onclick="sendOrderWhatsApp()">
-                <i class="fab fa-whatsapp"></i> Send via WhatsApp / ارسال الطلب
+                <i class="fab fa-whatsapp"></i> Send via WhatsApp / ارسال الطلب 💬
             </button>
         </div>
     </div>
@@ -984,7 +1068,7 @@
             { id: 'b9', nameEn: 'Chicken Fillet 4Pcs', nameAr: 'فيليه دجاج ٤ قطع', category: 'broasted', price: 20.00, desc: 'CAL 1875', hasFlavor: true },
 
             // 2. Shawarma (شاورما)
-            { id: 's1', nameEn: 'Shawarma Sandwich', nameAr: 'ساندوتش شاورما', category: 'shawarma', desc: 'CAL 352', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Normal', labelAr: 'عادي', price: 6.00}, {labelEn: 'With Cheese', labelAr: 'مع جبن', price: 7.00} ] },
+            { id: 's1', nameEn: 'Shawarma Sandwich', nameAr: 'ساندويش شاورما', category: 'shawarma', desc: 'CAL 352', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Normal', labelAr: 'عادي', price: 6.00}, {labelEn: 'With Cheese', labelAr: 'مع جبن', price: 7.00} ] },
             { id: 's3', nameEn: 'Saroukh Saj Shawarma', nameAr: 'صاروخ صاج شاورما', category: 'shawarma', desc: 'CAL 676', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Normal', labelAr: 'عادي', price: 12.00}, {labelEn: 'With Cheese', labelAr: 'مع جبن', price: 13.00} ] },
             { id: 's4', nameEn: 'Jambo Shawarma', nameAr: 'شاورما جامبو', category: 'shawarma', desc: 'CAL 525', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Normal', labelAr: 'عادي', price: 12.00}, {labelEn: 'With Cheese', labelAr: 'مع جبن', price: 13.00} ] },
             { id: 's6', nameEn: 'Shawarma Arabian', nameAr: 'شاورما عربي', category: 'shawarma', desc: 'CAL 753', hasCheeseOpt: true, cheeseOptions: [ {labelEn: 'Normal', labelAr: 'عادي', price: 15.00}, {labelEn: 'With Cheese', labelAr: 'مع جبن', price: 16.00} ] },
@@ -1082,6 +1166,30 @@
         let cart = {};
         let activeDrinkSubcat = 'small';
         let currentOrderType = 'Delivery';
+
+        function updateSaudiClockAndStatus() {
+            const now = new Date();
+            const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
+            const saudiDate = new Date(utcTime + (3600000 * 3));
+            const hours = saudiDate.getHours();
+            const minutes = saudiDate.getMinutes();
+            const seconds = saudiDate.getSeconds();
+            const formattedTime = String(hours).padStart(2, '0') + ":" + String(minutes).padStart(2, '0') + ":" + String(seconds).padStart(2, '0');
+            document.getElementById('liveClock').innerText = "Saudi Time: " + formattedTime + " (AST)";
+
+            const currentTimeInMinutes = hours * 60 + minutes;
+            const openTimeInMinutes = 12 * 60 + 30;
+            const closeTimeInMinutes = 1 * 60 + 30;
+            const statusElement = document.getElementById('store-status-badge');
+
+            if (currentTimeInMinutes >= openTimeInMinutes || currentTimeInMinutes < closeTimeInMinutes) {
+                statusElement.innerText = "🟢 OPEN NOW";
+                statusElement.className = "store-status status-open";
+            } else {
+                statusElement.innerText = "🔴 CLOSED NOW";
+                statusElement.className = "store-status status-closed";
+            }
+        }
 
         function renderMenu(category) {
             const container = document.getElementById('menu-container');
@@ -1299,11 +1407,13 @@
         }
 
         function updateCartUI() {
+            let totalCount = 0;
             let total = 0;
             let cartListHtml = '';
 
             for (let key in cart) {
                 const item = cart[key];
+                totalCount += item.qty;
                 const itemTotal = item.price * item.qty;
                 total += itemTotal;
 
@@ -1321,7 +1431,7 @@
                             </div>
                         </div>
                         <div class="cart-item-note">
-                            <input type="text" placeholder="✏️ Item Note / ملاحظة خاصة (e.g. Extra Garlic, No Hummus...)" value="${item.note || ''}" onchange="updateItemNote('${key}', this.value)" oninput="updateItemNote('${key}', this.value)">
+                            <input type="text" placeholder="✏️ Item Note / ملاحظة" value="${item.note || ''}" onchange="updateItemNote('${key}', this.value)" oninput="updateItemNote('${key}', this.value)">
                         </div>
                     </div>
                 `;
@@ -1330,11 +1440,26 @@
             document.getElementById('cart-total-display').innerText = total.toFixed(2) + ' SR';
             document.getElementById('cart-subtotal-val').innerText = total.toFixed(2) + ' SR';
             document.getElementById('cart-items-list').innerHTML = cartListHtml || '<p style="text-align:center; color:#888; padding:20px;">Your cart is empty / السلة فارغة</p>';
+
+            const floatingBadge = document.getElementById('floatingCartCount');
+            if (totalCount > 0) {
+                floatingBadge.innerText = totalCount;
+                floatingBadge.style.display = 'flex';
+                document.getElementById('cartBar').style.display = 'flex';
+            } else {
+                floatingBadge.style.display = 'none';
+                document.getElementById('cartBar').style.display = 'none';
+                closeCartViewModal();
+                closeOrderTypeModal();
+                closeCheckoutModal();
+            }
         }
 
         /* CART MODAL FUNCTIONS */
         function openCartViewModal() {
-            if (Object.keys(cart).length === 0) {
+            let totalCount = 0;
+            Object.values(cart).forEach(i => totalCount += i.qty);
+            if (totalCount === 0) {
                 alert('Please add items to your cart first! / الرجاء إضافة وجبات إلى السلة أولاً!');
                 return;
             }
@@ -1347,7 +1472,9 @@
 
         /* STEP 1: ORDER TYPE SELECTION MODAL */
         function proceedToOrderTypeStep() {
-            if (Object.keys(cart).length === 0) {
+            let totalCount = 0;
+            Object.values(cart).forEach(i => totalCount += i.qty);
+            if (totalCount === 0) {
                 alert('Your cart is empty.');
                 return;
             }
@@ -1441,7 +1568,6 @@
             msg += `📦 *Type:* ${currentOrderType === 'Delivery' ? 'DELIVERY (توصيل للمنزل)' : 'PICKUP (استلام من الفرع)'}\n`;
             msg += `👤 *Name:* ${name}\n`;
             if (currentOrderType === 'Delivery' && address) msg += `📍 *Address:* ${address}\n`;
-            if (overallNote) msg += `📝 *Notes/Time:* ${overallNote}\n`;
             msg += `-------------------------------------\n\n`;
 
             let total = 0;
@@ -1462,6 +1588,12 @@
                 msg += `\n`;
             }
 
+            // Overall Note placed right before the total amount underline
+            if (overallNote) {
+                msg += `-------------------------------------\n`;
+                msg += `📝 *Overall Note:* ${overallNote}\n`;
+            }
+
             const totalAr = String(total.toFixed(2)).replace(/[0-9]/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
 
             msg += `-------------------------------------\n`;
@@ -1469,38 +1601,18 @@
             msg += `💵 *المبلغ الإجمالي: ${totalAr} ر.س*\n`;
             msg += `-------------------------------------\n\n`;
 
-            if (currentOrderType === 'Delivery') {
-                msg += `ℹ️ *Note:*\nالمبلغ الإجمالي لا يشمل رسوم التوصيل\n(Delivery charges calculated based on distance)`;
-            }
+            // Delivery charge disclaimer at the very bottom
+            msg += `ℹ️ *Note:*\nالمبلغ الإجمالي لا يشمل رسوم التوصيل\n(Delivery charges will be calculated based on location distance)`;
 
             const phone = "966501163652";
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
             window.open(url, '_blank');
         }
 
-        function checkStoreStatus() {
-            const now = new Date();
-            const hours = now.getHours();
-            const minutes = now.getMinutes();
-            const currentTime = hours * 60 + minutes;
-
-            const openTime = 12 * 60 + 30; 
-            const closeTime = 1 * 60 + 30;  
-
-            const badge = document.getElementById('store-status-badge');
-
-            if (currentTime >= openTime || currentTime < closeTime) {
-                badge.innerText = 'OPEN NOW (مفتوح الآن)';
-                badge.className = 'store-status status-open';
-            } else {
-                badge.innerText = 'CLOSED NOW (مغلق الآن)';
-                badge.className = 'store-status status-closed';
-            }
-        }
-
         // Default Load: Broasted Category
         renderMenu('broasted');
-        checkStoreStatus();
+        updateSaudiClockAndStatus();
+        setInterval(updateSaudiClockAndStatus, 1000);
     </script>
 </body>
 </html>
