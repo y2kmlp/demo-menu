@@ -41,6 +41,7 @@
             padding-bottom: 110px;
             direction: ltr;
             text-align: left;
+            scroll-behavior: smooth;
         }
 
         /* 1st Announcement Bar (English - Right to Left) */
@@ -309,13 +310,20 @@
             border-color: var(--primary-dark);
             box-shadow: 0 4px 10px rgba(211, 47, 47, 0.25);
             transform: translateY(-2px);
+            animation: pulse-blink 1.5s infinite;
         }
 
         .cat-btn.active span, .cat-btn:hover span {
             color: #fff8e1;
         }
 
-        /* ===== SEARCH BOX & SCROLL HINT SECTION (Correct Position: After Category Nav) ===== */
+        @keyframes pulse-blink {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(0.98); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* ===== SEARCH BOX & SCROLL HINT SECTION ===== */
         .search-scroll-container {
             max-width: 800px;
             margin: 15px auto 5px auto;
@@ -660,6 +668,8 @@
             border-bottom: 2px solid #eee;
             padding-bottom: 10px;
             margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: 800;
         }
 
         .order-type-cards {
@@ -685,24 +695,6 @@
             background: #fff5f5;
             transform: translateY(-2px);
             box-shadow: 0 6px 14px rgba(211, 47, 47, 0.15);
-        }
-
-        .order-card-icon {
-            font-size: 34px;
-            margin-bottom: 8px;
-        }
-
-        .order-card-title-en {
-            font-size: 14px;
-            font-weight: 800;
-            color: #111;
-        }
-
-        .order-card-title-ar {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-top: 2px;
         }
 
         .cart-item-row {
@@ -787,17 +779,42 @@
         .qty-controls {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .qty-btn {
-            background: #eee;
+            background: var(--primary);
+            color: white;
             border: none;
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             cursor: pointer;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .delete-item-btn {
+            background: #ffebee;
+            color: var(--primary);
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            transition: 0.2s;
+        }
+
+        .delete-item-btn:hover {
+            background: var(--primary);
+            color: white;
         }
 
         footer {
@@ -898,7 +915,7 @@
         <button class="cat-btn" onclick="filterCategory('drinks', event)">Soft Drinks<span>مشروبات غازية</span></button>
     </div>
 
-    <!-- Search Box & Scroll Down Hint Section (Correctly placed between Category Nav and Menu) -->
+    <!-- Search Box & Scroll Down Hint Section -->
     <div class="search-scroll-container">
         <div class="search-box-wrapper">
             <i class="fas fa-search"></i>
@@ -915,9 +932,9 @@
 
     <!-- Floating Action Buttons (Home & Cart) -->
     <div class="floating-action-container">
-        <a href="#top-header" class="floating-fab" title="Go to Top / الرئيسية">🏠</a>
+        <a href="#top-header" class="floating-fab" title="Go to Top / الرئيسية"><i class="fas fa-home"></i></a>
         <a href="javascript:void(0);" onclick="openCartViewModal()" class="floating-fab cart-fab" title="View Cart / السلة">
-            🛒
+            <i class="fas fa-shopping-cart"></i>
             <span class="cart-badge-count" id="floatingCartCount" style="display: none;">0</span>
         </a>
     </div>
@@ -950,11 +967,11 @@
         </button>
     </div>
 
-    <!-- CART MODAL WITH ITEM-WISE NOTES -->
+    <!-- CART MODAL WITH ITEM-WISE NOTES AND DELETE BUTTON -->
     <div class="modal" id="cart-view-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Your Cart / سلة التسوق 🛒</h3>
+                <span>Your Cart / سلة التسوق 🛒</span>
                 <span style="cursor:pointer; font-size:22px; font-weight:bold;" onclick="closeCartViewModal()">&times;</span>
             </div>
 
@@ -979,7 +996,7 @@
             <div class="modal-header">
                 <div style="display:flex; align-items:center; gap:8px;">
                     <span style="cursor:pointer; font-size: 18px; font-weight: bold; color: var(--primary);" onclick="backToCartFromOrderType()">⬅️</span>
-                    <h3>Select Order Type / اختر نوع الطلب</h3>
+                    <span>Select Order Type / اختر نوع الطلب</span>
                 </div>
                 <span style="cursor:pointer; font-size:22px; font-weight:bold;" onclick="closeOrderTypeModal()">&times;</span>
             </div>
@@ -988,14 +1005,14 @@
 
             <div class="order-type-cards">
                 <div class="order-card-option" onclick="selectTypeAndProceed('Delivery')">
-                    <div class="order-card-icon">🚚</div>
-                    <div class="order-card-title-en">Delivery</div>
-                    <div class="order-card-title-ar">توصيل للمنزل</div>
+                    <div style="font-size: 32px; margin-bottom: 6px;">🚚</div>
+                    <div style="font-size: 14px; font-weight: 800;">Delivery</div>
+                    <div style="font-size: 12px; color: var(--primary); margin-top: 2px;">توصيل للمنزل</div>
                 </div>
                 <div class="order-card-option" onclick="selectTypeAndProceed('Pickup')">
-                    <div class="order-card-icon">🛍️</div>
-                    <div class="order-card-title-en">Pick up</div>
-                    <div class="order-card-title-ar">استلام من الفرع</div>
+                    <div style="font-size: 32px; margin-bottom: 6px;">🛍️</div>
+                    <div style="font-size: 14px; font-weight: 800;">Pick up</div>
+                    <div style="font-size: 12px; color: var(--primary); margin-top: 2px;">استلام من الفرع</div>
                 </div>
             </div>
         </div>
@@ -1007,7 +1024,7 @@
             <div class="modal-header">
                 <div style="display:flex; align-items:center; gap:8px;">
                     <span style="cursor:pointer; font-size: 18px; font-weight: bold; color: var(--primary);" onclick="backToOrderTypeFromCheckout()">⬅️</span>
-                    <h3>Checkout Details / تفاصيل الطلب</h3>
+                    <span>Checkout Details / تفاصيل الطلب</span>
                 </div>
                 <span style="cursor:pointer; font-size:20px;" onclick="closeCheckoutModal()">&times;</span>
             </div>
@@ -1419,6 +1436,11 @@
             updateCartUI();
         }
 
+        function removeItemCompletely(key) {
+            delete cart[key];
+            updateCartUI();
+        }
+
         function updateItemNote(key, noteValue) {
             if (cart[key]) {
                 cart[key].note = noteValue;
@@ -1440,17 +1462,21 @@
                     <div class="cart-item-row">
                         <div class="cart-item-main">
                             <div>
-                                <strong>${item.nameEn} / ${item.nameAr}</strong><br>
+                                <strong style="font-size:13px;">${item.nameEn}</strong><br>
+                                <span style="font-size:12px; color:#555;">${item.nameAr}</span><br>
                                 <small style="color:var(--primary); font-weight:bold;">${item.price.toFixed(2)} SR × ${item.qty} = ${itemTotal.toFixed(2)} SR</small>
                             </div>
-                            <div class="qty-controls">
-                                <button class="qty-btn" onclick="changeQty('${key}', -1)">-</button>
-                                <span><b>${item.qty}</b></span>
-                                <button class="qty-btn" onclick="changeQty('${key}', 1)">+</button>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <div class="qty-controls">
+                                    <button class="qty-btn" onclick="changeQty('${key}', -1)">-</button>
+                                    <span style="font-size:13px;"><b>${item.qty}</b></span>
+                                    <button class="qty-btn" onclick="changeQty('${key}', 1)">+</button>
+                                </div>
+                                <button class="delete-item-btn" onclick="removeItemCompletely('${key}')" title="Delete item"><i class="fas fa-trash-alt"></i></button>
                             </div>
                         </div>
                         <div class="cart-item-note">
-                            <input type="text" placeholder="✏️ Item Note / ملاحظة" value="${item.note || ''}" onchange="updateItemNote('${key}', this.value)" oninput="updateItemNote('${key}', this.value)">
+                            <input type="text" placeholder="✏️ Item Note / ملاحظة" value="${item.note || ''}" oninput="updateItemNote('${key}', this.value)">
                         </div>
                     </div>
                 `;
