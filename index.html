@@ -840,7 +840,7 @@
 <body>
 
     <!-- 1st Announcement Bar: English (Right to Left) -->
-    <div class="announcement-bar-1">
+    <div class="announcement-bar-1" id="top-page">
         <div class="marquee-left">
             🍗 Serving You Delicious Broasted Since 1987! &nbsp;&nbsp;|&nbsp;&nbsp; Al Malaz (Main): 0114775172 &nbsp;&nbsp;|&nbsp;&nbsp; Al Salam: 0112376000 &nbsp;&nbsp;|&nbsp;&nbsp; Al Munsiyah: 0550261660 &nbsp;&nbsp;|&nbsp;&nbsp; Al Futa: 0538896156
         </div>
@@ -924,7 +924,7 @@
 
     <!-- Floating Action Buttons (Home & Cart) -->
     <div class="floating-action-container">
-        <a href="#top-header" class="floating-fab" title="Go to Top / الرئيسية"><i class="fas fa-home"></i></a>
+        <a href="#top-page" class="floating-fab" title="Go to Top / الرئيسية" onclick="event.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'});"><i class="fas fa-home"></i></a>
         <a href="javascript:void(0);" onclick="openCartViewModal()" class="floating-fab cart-fab" title="View Cart / السلة">
             <i class="fas fa-shopping-cart"></i>
             <span class="cart-badge-count" id="floatingCartCount" style="display: none;">0</span>
