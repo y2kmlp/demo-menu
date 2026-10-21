@@ -71,7 +71,7 @@
         header {
             background-color: var(--secondary);
             box-shadow: var(--shadow);
-            padding: 10px 15px;
+            padding: 12px 15px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -79,14 +79,14 @@
             top: 0;
             z-index: 100;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
             border-bottom: 2px solid #f1f1f1;
         }
 
         /* Header Side Round Badges */
         .header-side-badge {
-            width: 50px;
-            height: 50px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, #fff3e0, #ffe0b2);
             border: 2px solid #e65100;
             border-radius: 50%;
@@ -100,15 +100,23 @@
             flex-shrink: 0;
         }
 
+        .header-side-badge span.badge-subtext {
+            font-size: 6px;
+            font-weight: 700;
+            color: #d32f2f;
+            line-height: 1;
+            margin-bottom: 1px;
+        }
+
         .header-side-badge span.badge-title {
-            font-size: 8px;
+            font-size: 9px;
             font-weight: 800;
             color: #b71c1c;
             line-height: 1;
         }
 
         .header-side-badge span.badge-year {
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 800;
             color: #e65100;
             margin-top: 1px;
@@ -118,25 +126,25 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .logo-container img {
-            height: 48px;
+            height: 55px;
             width: auto;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .brand-details h1 {
-            font-size: 17px;
+            font-size: 20px;
             color: var(--primary);
             line-height: 1.2;
             font-weight: 800;
         }
 
         .brand-details p {
-            font-size: 11px;
+            font-size: 13px;
             color: #555;
             font-weight: 600;
         }
@@ -144,16 +152,16 @@
         .header-center-slot {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
         .live-clock {
             background: rgba(0, 0, 0, 0.75);
             color: #ffffff;
-            padding: 4px 10px;
+            padding: 5px 12px;
             border-radius: 20px;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 700;
             border: 1px solid rgba(255, 235, 59, 0.6);
             backdrop-filter: blur(4px);
@@ -162,21 +170,21 @@
         .header-action-buttons {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
 
         .header-map-btn {
             background: #1a73e8;
             color: white;
-            padding: 5px 10px;
+            padding: 7px 14px;
             border-radius: 20px;
             text-decoration: none;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 4px;
+            gap: 5px;
             transition: 0.2s;
             box-shadow: 0 2px 6px rgba(26,115,232,0.3);
         }
@@ -184,15 +192,15 @@
         .header-call-btn {
             background: #2e7d32;
             color: white;
-            padding: 5px 10px;
+            padding: 7px 14px;
             border-radius: 20px;
             text-decoration: none;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 4px;
+            gap: 5px;
             transition: 0.2s;
             box-shadow: 0 2px 6px rgba(46,125,50,0.3);
         }
@@ -202,9 +210,9 @@
         }
 
         .store-status {
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 20px;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 700;
         }
 
@@ -216,57 +224,18 @@
 
         .status-closed {
             background-color: #ffebee;
-            color: c62828;
+            color: #c62828;
             border: 1px solid #ffcdd2;
         }
 
         @media (max-width: 768px) {
             header {
-                justify-content: space-between;
-                padding: 10px 10px;
+                justify-content: space-around;
+                padding: 12px 10px;
             }
-
             .header-side-badge {
-                width: 44px;
-                height: 44px;
-            }
-
-            .header-side-badge span.badge-title {
-                font-size: 7px;
-            }
-
-            .header-side-badge span.badge-year {
-                font-size: 9px;
-            }
-
-            .logo-container img {
-                height: 42px;
-            }
-
-            .brand-details h1 {
-                font-size: 15px;
-            }
-
-            .brand-details p {
-                font-size: 10px;
-            }
-
-            .header-center-slot {
-                width: 100%;
-                justify-content: space-between;
-                margin-top: 5px;
-                padding-top: 5px;
-                border-top: 1px solid #eee;
-            }
-
-            .header-action-buttons {
-                flex: 1;
-                justify-content: center;
-            }
-
-            .header-call-btn, .header-map-btn {
-                padding: 6px 8px;
-                font-size: 11px;
+                width: 58px;
+                height: 58px;
             }
         }
 
@@ -293,67 +262,6 @@
         @keyframes marquee-right-anim {
             0% { transform: translate(0, 0); }
             100% { transform: translate(100%, 0); }
-        }
-
-        /* ===== SEARCH BOX & SCROLL HINT SECTION ===== */
-        .search-scroll-container {
-            max-width: 800px;
-            margin: 15px auto 5px auto;
-            padding: 0 15px;
-        }
-
-        .search-box-wrapper {
-            position: relative;
-            margin-bottom: 10px;
-        }
-
-        .search-box-wrapper input {
-            width: 100%;
-            padding: 14px 15px 14px 45px;
-            border: 2.5px solid var(--primary);
-            border-radius: 14px;
-            font-size: 15px;
-            font-weight: 700;
-            background: #ffffff;
-            color: var(--text-color);
-            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.15);
-            transition: 0.2s;
-        }
-
-        .search-box-wrapper input:focus {
-            outline: none;
-            border-color: var(--primary-dark);
-            box-shadow: 0 6px 18px rgba(211, 47, 47, 0.25);
-        }
-
-        .search-box-wrapper i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--primary);
-            font-size: 18px;
-        }
-
-        .scroll-down-banner {
-            background: linear-gradient(135deg, #d32f2f, #b71c1c);
-            color: white;
-            border-radius: 12px;
-            padding: 10px 15px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 14px;
-            animation: bounce-slow 2s infinite;
-        }
-
-        @keyframes bounce-slow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-3px); }
         }
 
         /* 3x3 Grid Category Navigation */
@@ -405,6 +313,67 @@
 
         .cat-btn.active span, .cat-btn:hover span {
             color: #fff8e1;
+        }
+
+        /* ===== SEARCH BOX & SCROLL HINT SECTION (Correct Position: After Category Nav) ===== */
+        .search-scroll-container {
+            max-width: 800px;
+            margin: 15px auto 5px auto;
+            padding: 0 15px;
+        }
+
+        .search-box-wrapper {
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .search-box-wrapper input {
+            width: 100%;
+            padding: 14px 15px 14px 45px;
+            border: 2.5px solid var(--primary);
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 700;
+            background: #ffffff;
+            color: var(--text-color);
+            box-shadow: 0 4px 14px rgba(211, 47, 47, 0.2);
+            transition: 0.2s;
+        }
+
+        .search-box-wrapper input:focus {
+            outline: none;
+            border-color: var(--primary-dark);
+            box-shadow: 0 6px 20px rgba(211, 47, 47, 0.3);
+        }
+
+        .search-box-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .scroll-down-banner {
+            background: linear-gradient(135deg, #d32f2f, #b71c1c);
+            color: white;
+            border-radius: 12px;
+            padding: 10px 15px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            animation: bounce-slow 2s infinite;
+        }
+
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
         }
 
         /* Sub-category Filter Buttons */
@@ -482,50 +451,15 @@
             box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
         }
 
-        .item-card.category-broasted {
-            border-left: 5px solid #d32f2f;
-            background: linear-gradient(180deg, #ffffff 0%, #fff5f5 100%);
-        }
-
-        .item-card.category-shawarma {
-            border-left: 5px solid #e65100;
-            background: linear-gradient(180deg, #ffffff 0%, #fff8e1 100%);
-        }
-
-        .item-card.category-tortilla {
-            border-left: 5px solid #8e24aa;
-            background: linear-gradient(180deg, #ffffff 0%, #f3e5f5 100%);
-        }
-
-        .item-card.category-sandwiches {
-            border-left: 5px solid #2e7d32;
-            background: linear-gradient(180deg, #ffffff 0%, #f1f8e9 100%);
-        }
-
-        .item-card.category-burgers {
-            border-left: 5px solid #d81b60;
-            background: linear-gradient(180deg, #ffffff 0%, #fce4ec 100%);
-        }
-
-        .item-card.category-sauces {
-            border-left: 5px solid #f57c00;
-            background: linear-gradient(180deg, #ffffff 0%, #fff3e0 100%);
-        }
-
-        .item-card.category-sides {
-            border-left: 5px solid #00897b;
-            background: linear-gradient(180deg, #ffffff 0%, #e0f2f1 100%);
-        }
-
-        .item-card.category-juices {
-            border-left: 5px solid #fb8c00;
-            background: linear-gradient(180deg, #ffffff 0%, #fffde7 100%);
-        }
-
-        .item-card.category-drinks {
-            border-left: 5px solid #0288d1;
-            background: linear-gradient(180deg, #ffffff 0%, #e1f5fe 100%);
-        }
+        .item-card.category-broasted { border-left: 5px solid #d32f2f; background: linear-gradient(180deg, #ffffff 0%, #fff5f5 100%); }
+        .item-card.category-shawarma { border-left: 5px solid #e65100; background: linear-gradient(180deg, #ffffff 0%, #fff8e1 100%); }
+        .item-card.category-tortilla { border-left: 5px solid #8e24aa; background: linear-gradient(180deg, #ffffff 0%, #f3e5f5 100%); }
+        .item-card.category-sandwiches { border-left: 5px solid #2e7d32; background: linear-gradient(180deg, #ffffff 0%, #f1f8e9 100%); }
+        .item-card.category-burgers { border-left: 5px solid #d81b60; background: linear-gradient(180deg, #ffffff 0%, #fce4ec 100%); }
+        .item-card.category-sauces { border-left: 5px solid #f57c00; background: linear-gradient(180deg, #ffffff 0%, #fff3e0 100%); }
+        .item-card.category-sides { border-left: 5px solid #00897b; background: linear-gradient(180deg, #ffffff 0%, #e0f2f1 100%); }
+        .item-card.category-juices { border-left: 5px solid #fb8c00; background: linear-gradient(180deg, #ffffff 0%, #fffde7 100%); }
+        .item-card.category-drinks { border-left: 5px solid #0288d1; background: linear-gradient(180deg, #ffffff 0%, #e1f5fe 100%); }
 
         .item-info h3 {
             font-size: 16px;
@@ -728,7 +662,6 @@
             margin-bottom: 15px;
         }
 
-        /* Order Type Selector Cards */
         .order-type-cards {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -772,7 +705,6 @@
             margin-top: 2px;
         }
 
-        /* Item-wise Notes in Cart */
         .cart-item-row {
             background: #ffffff;
             border-radius: 12px;
@@ -801,13 +733,6 @@
             background: #fafafa;
         }
 
-        .cart-item-note input:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: #ffffff;
-        }
-
-        /* Checkout UI */
         .checkout-section-card {
             background: #ffffff;
             border-radius: 12px;
@@ -835,11 +760,6 @@
             border: 1px solid #ccc;
             border-radius: 8px;
             font-size: 14px;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--primary);
         }
 
         .delivery-note-box {
@@ -878,11 +798,6 @@
             border-radius: 50%;
             cursor: pointer;
             font-weight: bold;
-            transition: 0.2s;
-        }
-
-        .qty-btn:hover {
-            background: #ddd;
         }
 
         footer {
@@ -929,6 +844,7 @@
     <header id="top-header">
         <!-- Left Side Round Badge (English) -->
         <div class="header-side-badge">
+            <span class="badge-subtext">Serving You</span>
             <span class="badge-title">Since</span>
             <span class="badge-year">1987</span>
         </div>
@@ -956,6 +872,7 @@
 
         <!-- Right Side Round Badge (Arabic) -->
         <div class="header-side-badge">
+            <span class="badge-subtext">نخدمكم بأشهى</span>
             <span class="badge-title">منذ</span>
             <span class="badge-year">١٩٨٧</span>
         </div>
@@ -981,7 +898,7 @@
         <button class="cat-btn" onclick="filterCategory('drinks', event)">Soft Drinks<span>مشروبات غازية</span></button>
     </div>
 
-    <!-- Search Box & Scroll Down Hint Section (Positioned between Category Navigation and Menu Products) -->
+    <!-- Search Box & Scroll Down Hint Section (Correctly placed between Category Nav and Menu) -->
     <div class="search-scroll-container">
         <div class="search-box-wrapper">
             <i class="fas fa-search"></i>
@@ -1283,7 +1200,6 @@
             const container = document.getElementById('menu-container');
             let filtered = menuItems.filter(i => i.category === category);
 
-            // If user typed in search box, search across all items or current category
             if (searchQuery !== '') {
                 filtered = menuItems.filter(i => 
                     i.nameEn.toLowerCase().includes(searchQuery) || 
@@ -1624,7 +1540,6 @@
                 addressGroup.style.display = 'none';
             }
 
-            // Summary View
             let summaryHTML = '<div style="font-size:14px; font-weight:bold; color:#111; margin-bottom:8px; border-bottom:1px solid #eee; padding-bottom:4px;">📋 Order Summary / ملخص الطلب</div>';
             for (let key in cart) {
                 const i = cart[key];
@@ -1680,7 +1595,7 @@
                 const itemTotal = item.price * item.qty;
                 total += itemTotal;
 
-                const qtyAr = String(item.qty).replace(/[0-9]/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+                const qtyAr = String(item.qty).replace(/[0-9]/g, d => '٠١ي٣٤٥٦٧٨٩'[d]);
                 const itemTotalAr = String(itemTotal.toFixed(2)).replace(/[0-9]/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
 
                 msg += `*${item.qty} . ${item.nameEn} - ${itemTotal.toFixed(2)} SR*\n`;
@@ -1691,7 +1606,6 @@
                 msg += `\n`;
             }
 
-            // Overall Note placed right before the total amount underline
             if (overallNote) {
                 msg += `-------------------------------------\n`;
                 msg += `📝 *Overall Note:* ${overallNote}\n`;
@@ -1704,7 +1618,6 @@
             msg += `💵 *المبلغ الإجمالي: ${totalAr} ر.س*\n`;
             msg += `-------------------------------------\n\n`;
 
-            // Delivery charge disclaimer at the very bottom
             msg += `ℹ️ *Note:*\nالمبلغ الإجمالي لا يشمل رسوم التوصيل\n(Delivery charges will be calculated based on location distance)`;
 
             const phone = "966501163652";
@@ -1712,7 +1625,6 @@
             window.open(url, '_blank');
         }
 
-        // Default Load: Broasted Category
         renderMenu('broasted');
         updateSaudiClockAndStatus();
         setInterval(updateSaudiClockAndStatus, 1000);
