@@ -166,55 +166,46 @@
             margin-top: 8px;
         }
 
-        .live-clock {
-            background: rgba(0, 0, 0, 0.75);
-            color: #ffffff;
-            padding: 4px 10px;
+        /* Uniform Header Buttons Layout */
+        .uniform-header-btn {
+            flex: 1;
+            min-width: 105px;
+            height: 38px;
             border-radius: 20px;
             font-size: 11px;
-            font-weight: 700;
-            border: 1px solid rgba(255, 235, 59, 0.6);
-        }
-
-        .header-action-buttons {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .header-map-btn {
-            background: #1a73e8;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 11px;
-            font-weight: 700;
+            font-weight: 800;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 4px;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.08);
+            padding: 0 8px;
+            white-space: nowrap;
         }
 
         .header-call-btn {
             background: #2e7d32;
             color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 11px;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
+        }
+
+        .live-clock {
+            background: rgba(0, 0, 0, 0.85);
+            color: #ffffff;
+            border: 1px solid rgba(255, 235, 59, 0.6);
+        }
+
+        .header-map-btn {
+            background: #1a73e8;
+            color: white;
         }
 
         .store-status {
-            padding: 5px 10px;
+            padding: 5px 12px;
             border-radius: 20px;
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .status-open {
@@ -254,7 +245,7 @@
             100% { transform: translate(100%, 0); }
         }
 
-        /* 3x3 Grid Category Navigation */
+        /* 3x3 Grid Category Navigation - Premium Top-Chicken Style */
         .category-grid-nav {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -264,18 +255,18 @@
             border-bottom: 1px solid var(--gray-light);
             max-width: 800px;
             margin: 10px auto;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+            border-radius: 14px;
         }
 
         .cat-btn {
-            padding: 10px 6px;
-            border: 1.5px solid var(--gray-light);
-            border-radius: 10px;
+            padding: 12px 8px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
             background: #ffffff;
             color: var(--text-color);
-            font-weight: 700;
-            font-size: 13px;
+            font-weight: 800;
+            font-size: 14px;
             cursor: pointer;
             transition: all 0.25s ease;
             text-align: center;
@@ -283,21 +274,22 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            line-height: 1.2;
+            line-height: 1.25;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.03);
         }
 
         .cat-btn span {
-            font-size: 11px;
-            font-weight: 600;
-            color: #666;
-            margin-top: 3px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #555;
+            margin-top: 4px;
         }
 
         .cat-btn.active, .cat-btn:hover {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             border-color: var(--primary-dark);
-            box-shadow: 0 4px 10px rgba(211, 47, 47, 0.25);
+            box-shadow: 0 6px 14px rgba(211, 47, 47, 0.3);
             transform: translateY(-2px);
             animation: pulse-blink 1.5s infinite;
         }
@@ -874,15 +866,13 @@
         </div>
 
         <div class="header-center-slot">
-            <div class="live-clock" id="liveClock">Saudi Time: --:--:--</div>
-            <div class="header-action-buttons">
-                <a href="tel:0112376000" class="header-call-btn">
-                    <i class="fas fa-phone-alt"></i> 0112376000
-                </a>
-                <a href="https://maps.app.goo.gl/reHjbT4YxnHDwFmYA?g_st=ഔ" target="_blank" class="header-map-btn">
-                    <i class="fas fa-map-marker-alt"></i> Location
-                </a>
-            </div>
+            <a href="tel:0112376000" class="uniform-header-btn header-call-btn">
+                <i class="fas fa-phone-alt"></i> 0112376000
+            </a>
+            <div class="uniform-header-btn live-clock" id="liveClock">Saudi Time: --:--:--</div>
+            <a href="https://maps.app.goo.gl/reHjbT4YxnHDwFmYA?g_st=ഔ" target="_blank" class="uniform-header-btn header-map-btn">
+                <i class="fas fa-map-marker-alt"></i> Location
+            </a>
             <div id="store-status-badge" class="store-status status-open">...</div>
         </div>
     </header>
