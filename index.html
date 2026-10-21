@@ -72,80 +72,87 @@
         header {
             background-color: var(--secondary);
             box-shadow: var(--shadow);
-            padding: 12px 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            padding: 10px 12px;
             position: sticky;
             top: 0;
             z-index: 100;
-            flex-wrap: wrap;
-            gap: 10px;
             border-bottom: 2px solid #f1f1f1;
         }
 
-        /* Header Side Round Badges */
+        .header-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            gap: 5px;
+        }
+
+        /* Header Side Round Badges - Optimized for Single Row in Mobile */
         .header-side-badge {
-            width: 70px;
-            height: 70px;
+            width: 55px;
+            height: 55px;
             background: linear-gradient(135deg, #fff3e0, #ffe0b2);
-            border: 2px solid #e65100;
+            border: 1.5px solid #e65100;
             border-radius: 50%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-            padding: 2px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            padding: 1px;
             flex-shrink: 0;
         }
 
         .header-side-badge span.badge-subtext {
-            font-size: 6px;
+            font-size: 5px;
             font-weight: 700;
             color: #d32f2f;
             line-height: 1;
-            margin-bottom: 1px;
+            margin-bottom: 0.5px;
         }
 
         .header-side-badge span.badge-title {
-            font-size: 9px;
+            font-size: 7.5px;
             font-weight: 800;
             color: #b71c1c;
             line-height: 1;
         }
 
         .header-side-badge span.badge-year {
-            font-size: 11px;
+            font-size: 9px;
             font-weight: 800;
             color: #e65100;
-            margin-top: 1px;
+            margin-top: 0.5px;
             line-height: 1;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
+            flex: 1;
+            justify-content: center;
         }
 
         .logo-container img {
-            height: 55px;
+            height: 45px;
             width: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
         .brand-details h1 {
-            font-size: 20px;
+            font-size: 16px;
             color: var(--primary);
-            line-height: 1.2;
+            line-height: 1.1;
             font-weight: 800;
         }
 
         .brand-details p {
-            font-size: 13px;
+            font-size: 11px;
             color: #555;
             font-weight: 600;
         }
@@ -153,65 +160,58 @@
         .header-center-slot {
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            gap: 6px;
             flex-wrap: wrap;
+            margin-top: 8px;
         }
 
         .live-clock {
             background: rgba(0, 0, 0, 0.75);
             color: #ffffff;
-            padding: 5px 12px;
+            padding: 4px 10px;
             border-radius: 20px;
             font-size: 11px;
             font-weight: 700;
             border: 1px solid rgba(255, 235, 59, 0.6);
-            backdrop-filter: blur(4px);
         }
 
         .header-action-buttons {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .header-map-btn {
             background: #1a73e8;
             color: white;
-            padding: 7px 14px;
+            padding: 5px 10px;
             border-radius: 20px;
             text-decoration: none;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
-            transition: 0.2s;
-            box-shadow: 0 2px 6px rgba(26,115,232,0.3);
+            gap: 4px;
         }
 
         .header-call-btn {
             background: #2e7d32;
             color: white;
-            padding: 7px 14px;
+            padding: 5px 10px;
             border-radius: 20px;
             text-decoration: none;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
-            transition: 0.2s;
-            box-shadow: 0 2px 6px rgba(46,125,50,0.3);
-        }
-
-        .header-map-btn:hover, .header-call-btn:hover {
-            transform: translateY(-1px);
+            gap: 4px;
         }
 
         .store-status {
-            padding: 6px 12px;
+            padding: 5px 10px;
             border-radius: 20px;
             font-size: 11px;
             font-weight: 700;
@@ -227,17 +227,6 @@
             background-color: #ffebee;
             color: #c62828;
             border: 1px solid #ffcdd2;
-        }
-
-        @media (max-width: 768px) {
-            header {
-                justify-content: space-around;
-                padding: 12px 10px;
-            }
-            .header-side-badge {
-                width: 58px;
-                height: 58px;
-            }
         }
 
         /* 2nd Announcement Bar (Arabic - Left to Right) */
@@ -859,18 +848,28 @@
 
     <!-- Header Section -->
     <header id="top-header">
-        <!-- Left Side Round Badge (English) -->
-        <div class="header-side-badge">
-            <span class="badge-subtext">Serving You</span>
-            <span class="badge-title">Since</span>
-            <span class="badge-year">1987</span>
-        </div>
+        <div class="header-top-row">
+            <!-- Left Side Round Badge (English) -->
+            <div class="header-side-badge">
+                <span class="badge-subtext">Serving You</span>
+                <span class="badge-title">Since</span>
+                <span class="badge-year">1987</span>
+            </div>
 
-        <div class="logo-container">
-            <img src="logo.png" alt="Kufi Broasted" onerror="this.src='https://via.placeholder.com/55?text=Kufi'">
-            <div class="brand-details">
-                <h1>Kufi Broasted</h1>
-                <p>كوفي بروستد - السلام</p>
+            <!-- Center Logo and Brand Details -->
+            <div class="logo-container">
+                <img src="logo.png" alt="Kufi Broasted" onerror="this.src='https://via.placeholder.com/55?text=Kufi'">
+                <div class="brand-details">
+                    <h1>Kufi Broasted</h1>
+                    <p>كوفي بروستد - السلام</p>
+                </div>
+            </div>
+
+            <!-- Right Side Round Badge (Arabic) -->
+            <div class="header-side-badge">
+                <span class="badge-subtext">نخدمكم بأشهى</span>
+                <span class="badge-title">منذ</span>
+                <span class="badge-year">١٩٨٧</span>
             </div>
         </div>
 
@@ -885,13 +884,6 @@
                 </a>
             </div>
             <div id="store-status-badge" class="store-status status-open">...</div>
-        </div>
-
-        <!-- Right Side Round Badge (Arabic) -->
-        <div class="header-side-badge">
-            <span class="badge-subtext">نخدمكم بأشهى</span>
-            <span class="badge-title">منذ</span>
-            <span class="badge-year">١٩٨٧</span>
         </div>
     </header>
 
